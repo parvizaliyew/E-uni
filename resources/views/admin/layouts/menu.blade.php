@@ -97,16 +97,12 @@
     <img src="{{asset('manager/')}}/img/client_img.png" alt="#">
     <div class="profile_info_iner">
     <div class="profile_author_name">
-        @php
-            $user=App\Models\User::with('roles')->find(Auth::user()->id);
-            $user=$user->roles()->pluck('name')->first();
-        @endphp
-    <p>{{ Str::upper($user) }} </p>
-    <h5>{{ Auth::user()->name }}  {{ Auth::user()->lname }}</h5>
+    <p>Pərviz </p>
+    <h5>Əliyev Pərviz</h5>
     </div>
     <div class="profile_info_details">
-    <a href="{{ route('admin.profil_update') }}">Mənim Profilim </a>
-    <a href="{{ route('admin.logout') }}">Çıxış</a>
+    <a href="">Mənim Profilim </a>
+    <a href="">Çıxış</a>
     </div>
     </div>
     </div>
