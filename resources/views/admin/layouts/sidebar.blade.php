@@ -24,6 +24,15 @@
         <span>News&Events</span>
         </a>
     </li>
+
+    <li class="mm-active">
+        <a  href="{{ route('slider.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+            <i class="ti-settings"></i>
+        </div>
+        <span>Slider</span><i class="ri-xbox-fill"></i>
+        </a>
+    </li>
    
     </ul>
     </nav>

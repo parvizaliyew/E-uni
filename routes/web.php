@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsEventController;
 
@@ -23,5 +24,9 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () 
 {
     Route::get('/',[DashboardController::class,'index'])->name('admin.index');
-    Route::resource('/news-event', NewsEventController::class);;
+    Route::resource('/news-event', NewsEventController::class);
+    Route::get('/news-event/delete/{id}',[NewsEventController::class,'delete'])->name('news-event.delete');
+    Route::resource('/slider', SliderController::class);
+    Route::get('/slider/delete/{id}',[SliderController::class,'delete'])->name('slider.delete');
+
 });

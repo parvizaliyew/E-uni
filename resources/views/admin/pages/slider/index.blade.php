@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-News&Event
+Slider
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@ News&Event
                         <div class="white_card_header">
                             <div class="box_header m-0">
                                 <div class="main-title">
-                                    <h3 class="m-0">News&Event</h3>
+                                    <h3 class="m-0">Slider</h3>
                                 </div>
                             </div>
                         </div>
@@ -25,7 +25,7 @@ News&Event
                                     <h4>Table</h4>
 
                                     <div class="add_button ms-2">
-                                        <a href="{{ route('news-event.create') }}" class="btn_1">ADD</a>
+                                        <a href="{{ route('slider.create') }}" class="btn_1">ADD</a>
                                     </div>
                                 </div>
                             </div>
@@ -35,26 +35,22 @@ News&Event
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Type</th>
                                             <th scope="col">Image</th>
                                             <th scope="col">Title</th>
-                                            <th scope="col">Short desc</th>
                                             <th scope="col">Prosesler</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                        
-                                        @foreach ($n_e as $item)
-                                        <tr>
+                                        @foreach ($sliders as $item)
+                                         <tr>
                                             <td>{{ $loop->index+1 }}</td>
-                                            <td>{{ $item->type===0 ? 'Event' : 'News' }}</td>
                                             <td><img width="70px" height="70px" src="{{ asset($item->img) }}" alt=""></td>
                                             <td>{{ Str::limit($item->translate('title'),20,'...') }}</td>
-                                            <td>{{ Str::limit($item->translate('short_desc'),20,'...') }}</td>
                                             <td class="d-flex" style="font-size: 20px;">
-                                                <a class="btn btn-primary" href="{{ route('news-event.edit',$item->id) }}"><i class="ti-pencil"></i></a>
-                                                <a class="btn btn-danger delete" href="{{ route('news-event.delete',$item->id) }}"><i class="ti-trash"></i></a>                                               
+                                                <a class="btn btn-primary" href="{{ route('slider.edit',$item->id) }}"><i class="ti-pencil"></i></a>
+                                                <a class="btn btn-danger delete" href="{{ route('slider.delete',$item->id) }}"><i class="ti-trash"></i></a>
                                             </td>
 
                                         </tr>

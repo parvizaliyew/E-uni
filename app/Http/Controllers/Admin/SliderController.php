@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\NewsEvent;
+use App\Models\Slider;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
-use App\Http\Requests\NewsEventRequest;
 use Illuminate\Support\Facades\Validator;
 
-class NewsEventController extends Controller
+class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +18,8 @@ class NewsEventController extends Controller
      */
     public function index()
     {
-        $n_e=NewsEvent::get();
-        return view('admin.pages.event_news.index',compact('n_e'));
+        $sliders=Slider::get();
+        return view('admin.pages.slider.index',compact('sliders'));
     }
 
     /**
@@ -30,7 +29,7 @@ class NewsEventController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.event_news.create');
+        return view('admin.pages.slider.create');
 
     }
 
@@ -42,14 +41,21 @@ class NewsEventController extends Controller
      */
     public function store(Request $request)
     {
-        $news_event=new NewsEvent;
+        $sliders=new Slider;
         $data = $request->all();
         $validator = Validator::make($data, [
             'title'   => 'required',
-            'type'    => 'required',
+            'link'   => 'required',
             'desc' => 'required',
-            'date' => 'required',
             'img'   => 'required|max:256|mimes:png,jpg,svg,webp',
+        ],
+        [
+            'title.required'=>'enter the title',
+            'link.required'=>'enter the link',
+            'desc.required'=>'enter the description',
+            'img.required'=>'enter the img',
+            'img.mimes'=>'The image should be in png ,jpg,svg,webp format',
+
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
@@ -59,21 +65,16 @@ class NewsEventController extends Controller
         {
             $ext=$request->img->extension();
             $fileName=rand(1,100).time().'.'.$ext;
-            $fileNameWithUpload='image/event-news/'.$fileName;
-            $request->img->move('image/event-news/',$fileName);
+            $fileNameWithUpload='image/slider/'.$fileName;
+            $request->img->move('image/slider/',$fileName);
             $data['img']=$fileNameWithUpload;
         }
         
-        $data['slug'] = [];
-        foreach (json_decode($request->title) as $key => $title) {
-            $data['slug'][$key] = Str::slug($title);
-        }
 
-        NewsEvent::create($data);
+        Slider::create($data);
 
-        toastr()->success('added news or event information.');
-        return redirect()->route('news-event.index');
-
+        toastr()->success('added slider information.');
+        return redirect()->route('slider.index');
     }
 
     /**
@@ -95,8 +96,10 @@ class NewsEventController extends Controller
      */
     public function edit($id)
     {
-        $news_event=NewsEvent::findOrFail($id);
-        return view('admin.pages.event_news.edit',compact('news_event'));
+        $slider=Slider::findOrFail($id);
+
+        return view('admin.pages.slider.edit',compact('slider'));
+
     }
 
     /**
@@ -108,13 +111,12 @@ class NewsEventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $news_event=NewsEvent::findOrFail($id);
+        $slider=Slider::findOrFail($id);
         $data = $request->all();
         $validator = Validator::make($data, [
             'title'   => 'required',
-            'type'    => 'required',
             'desc'    => 'required',
-            'date'    => 'required',
+            'link'    => 'required',
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
@@ -122,36 +124,26 @@ class NewsEventController extends Controller
 
         if($request->has('img'))
         {
-            if(File::exists($news_event->img))
+            if(File::exists($slider->img))
             {
-                File::delete($news_event->img);
+                File::delete($slider->img);
             }
             $ext=$request->img->extension();
             $fileName=rand(1,100).time().'.'.$ext;
-            $fileNameWithUpload='image/event-news/'.$fileName;
-            $request->img->move('image/event-news/',$fileName);
-            $news_event->img=$fileNameWithUpload;
+            $fileNameWithUpload='image/slider/'.$fileName;
+            $request->img->move('image/slider/',$fileName);
+            $slider->img=$fileNameWithUpload;
 
         }
 
-        $data['slug'] = $news_event->slug;
-        foreach (json_decode($request->title) as $key => $title) 
-        {
-            $data['slug'][$key] = Str::slug($title);
-        }
+        $slider->title=$request->title;
+        $slider->desc=$request->desc;
+        $slider->link=$request->link;
+        $slider->save();
 
-        $news_event->title=$request->title;
-        $news_event->short_desc=$request->short_desc;
-        $news_event->desc=$request->desc;
-        $news_event->slug=$data['slug'];
-        $news_event->date=$request->date;
-        $news_event->type=$request->type;
-        $news_event->save();
-
-
-
-        toastr()->success('updated news or event information.');
-        return redirect()->route('news-event.index');    }
+        toastr()->success('updated slider information.');
+        return redirect()->route('slider.index');    
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -161,22 +153,21 @@ class NewsEventController extends Controller
      */
     public function delete($id)
     {
-            try {
-                $news_event=NewsEvent::findOrFail($id);
-                if(File::exists($news_event->img))
-                {
-                    File::delete($news_event->img);
-                }
-            $news_event->delete();
+        try {
+            $slider=Slider::findOrFail($id);
+            if(File::exists($slider->img))
+            {
+                File::delete($slider->img);
+            }
+        $slider->delete();
+        return response()->json([
+            'message' => 'Your Slider have been successfully deleted',
+            'code' => 204,
+        ]);
+        } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'Your News or Event have been successfully deleted',
-                'code' => 204,
-            ]);
-            } catch (\Throwable $th) {
-                return response()->json([
-                    'message' => 'Something went wrong',
-                    'code' => 500,
-                ]);}
+                'message' => 'Something went wrong',
+                'code' => 500,
+            ]);}
     }
-    
 }
