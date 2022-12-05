@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-Slider
+LeaderShip
 @endsection
 
 @section('content')
@@ -15,7 +15,8 @@ Slider
                         <div class="white_card_header">
                             <div class="box_header m-0">
                                 <div class="main-title">
-                                    <h3 class="m-0">Slider</h3>
+                                    <h3 class="m-0">LeaderShip
+                                    </h3>
                                 </div>
                             </div>
                         </div>
@@ -25,7 +26,7 @@ Slider
                                     <h4>Table</h4>
 
                                     <div class="add_button ms-2">
-                                        <a href="{{ route('slider.create') }}" class="btn_1">ADD</a>
+                                        <a href="{{ route('leadership.create') }}" class="btn_1">ADD</a>
                                     </div>
                                 </div>
                             </div>
@@ -36,23 +37,22 @@ Slider
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Image</th>
-                                            <th scope="col">Title</th>
+                                            <th scope="col">Name</th>
                                             <th scope="col">Prosesler</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                        
-                                        @foreach ($sliders as $item)
+                                        @foreach ($liders as $item)
                                          <tr>
                                             <td>{{ $loop->index+1 }}</td>
                                             <td><img width="70px" height="70px" src="{{ asset($item->img) }}" alt=""></td>
-                                            <td>{{ Str::limit($item->translate('title'),20,'...') }}</td>
+                                            <td>{{ Str::limit($item->translate('name'),20,'...') }}</td>
                                             <td class="d-flex" style="font-size: 20px;">
-                                                <a class="btn btn-primary" href="{{ route('slider.edit',$item->id) }}"><i class="ti-pencil"></i></a>
-                                                <a class="btn btn-danger delete" href="{{ route('slider.delete',$item->id) }}"><i class="ti-trash"></i></a>
-                                            </td>
-                                        </tr>
+                                                <a class="btn btn-primary" href="{{ route('leadership.edit',$item->id) }}"><i class="ti-pencil"></i></a>
+                                                <a class="btn btn-danger delete" href="{{ route('leadership.delete',$item->id) }}"><i class="ti-trash"></i></a>
+                                            </td>    
                                         @endforeach
                                     
                                     </tbody>

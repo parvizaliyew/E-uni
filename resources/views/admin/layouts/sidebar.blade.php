@@ -19,20 +19,34 @@
     <li class="mm-active">
         <a  href="{{ route('news-event.index') }}" aria-expanded="false">
         <div class="icon_menu">
-            <i class="ti-settings"></i>
+            <i class="ti-calendar"></i>
         </div>
         <span>News&Events</span>
         </a>
     </li>
-
     <li class="mm-active">
         <a  href="{{ route('slider.index') }}" aria-expanded="false">
         <div class="icon_menu">
-            <i class="ti-settings"></i>
+            <i class="ti-gallery"></i>
         </div>
-        <span>Slider</span><i class="ri-xbox-fill"></i>
+        <span>Slider</span>
         </a>
     </li>
-   
+    <li class="mm-active">
+        <a  href="{{ route('leadership.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+            <i class="ti-medall"></i>
+        </div>
+        <span>Leadership</span>
+        </a>
+    </li>
+    <li class="mm-active">
+        <a  href="{{ route('leadership.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+            <i class="ti-medall"></i>
+        </div>
+        <span>Proqram's Degree</span>
+        </a>
+    </li>
     </ul>
     </nav>
