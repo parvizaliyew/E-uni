@@ -147,9 +147,6 @@ class NewsEventController extends Controller
         $news_event->date=$request->date;
         $news_event->type=$request->type;
         $news_event->save();
-
-
-
         toastr()->success('updated news or event information.');
         return redirect()->route('news-event.index');    }
 

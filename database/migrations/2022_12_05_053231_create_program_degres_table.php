@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('program_degres', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('logo');
+            $table->string('img');
+            $table->string('short_desc');
+            $table->string('title');
+            $table->text('desc');
+            $table->integer('type');
+            $table->string('slug');
             $table->timestamps();
         });
     }

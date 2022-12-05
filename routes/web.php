@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\LiderController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsEventController;
+use App\Http\Controllers\Admin\ProgramDegreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,8 @@ Route::prefix('admin')->group(function ()
 
     Route::resource('/leadership', LiderController::class);
     Route::get('/leadership/delete/{id}',[LiderController::class,'delete'])->name('leadership.delete');
+
+    Route::resource('/programs-degree', ProgramDegreController::class);
+    Route::get('/programs-degree/delete/{id}', [ProgramDegreController::class,'delete'])->name('programs-degree.delete');
+
 });

@@ -41,7 +41,7 @@
         </a>
     </li>
     <li class="mm-active">
-        <a  href="{{ route('leadership.index') }}" aria-expanded="false">
+        <a  href="{{ route('programs-degree.index') }}" aria-expanded="false">
         <div class="icon_menu">
             <i class="ti-medall"></i>
         </div>
