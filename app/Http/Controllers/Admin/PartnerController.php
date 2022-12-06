@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Slider;
-use Illuminate\Support\Str;
+use App\Models\Partner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
-class SliderController extends Controller
+class PartnerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +17,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $sliders=Slider::get();
-        return view('admin.pages.slider.index',compact('sliders'));
+        $partners=Partner::get();
+        return view('admin.pages.partner.index',compact('partners'));
     }
 
     /**
@@ -29,8 +28,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.slider.create');
-
+        return view('admin.pages.partner.create');
     }
 
     /**
@@ -41,18 +39,12 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        $sliders=new Slider;
+        $partner=new Partner;
         $data = $request->all();
         $validator = Validator::make($data, [
-            'title'   => 'required',
-            'link'   => 'required',
-            'desc' => 'required',
             'img'   => 'required|max:256|mimes:png,jpg,svg,webp',
         ],
         [
-            'title.required'=>'enter the title',
-            'link.required'=>'enter the link',
-            'desc.required'=>'enter the description',
             'img.required'=>'Please enter the img',
             'img.mimes'=>'The image should be in png ,jpg,svg,webp format',
         ]);
@@ -64,16 +56,14 @@ class SliderController extends Controller
         {
             $ext=$request->img->extension();
             $fileName=rand(1,100).time().'.'.$ext;
-            $fileNameWithUpload='image/slider/'.$fileName;
-            $request->img->move('image/slider/',$fileName);
+            $fileNameWithUpload='image/partner/'.$fileName;
+            $request->img->move('image/partner/',$fileName);
             $data['img']=$fileNameWithUpload;
         }
-        
+        Partner::create($data);
 
-        Slider::create($data);
-
-        toastr()->success('added slider information.');
-        return redirect()->route('slider.index');
+        toastr()->success('added partner information.');
+        return redirect()->route('partner.index');
     }
 
     /**
@@ -95,10 +85,10 @@ class SliderController extends Controller
      */
     public function edit($id)
     {
-        $slider=Slider::findOrFail($id);
 
-        return view('admin.pages.slider.edit',compact('slider'));
+        $partner=Partner::findOrFail($id);
 
+        return view('admin.pages.partner.edit',compact('partner'));
     }
 
     /**
@@ -110,38 +100,37 @@ class SliderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $slider=Slider::findOrFail($id);
-        $data = $request->all();
+        $partner=Partner::findOrFail($id);
+        $data=$request->all();
         $validator = Validator::make($data, [
-            'title'   => 'required',
-            'desc'    => 'required',
-            'link'    => 'required',
+            'img'   => 'mimes:png,jpg,svg,webp',
+        ],
+        [
+            'img.mimes'=>' The image should be in png ,jpg,svg,webp format',
         ]);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator);
+
+        if($validator->fails())
+        {
+             return redirect()->back()->withErrors($validator);
         }
 
         if($request->has('img'))
         {
-            if(File::exists($slider->img))
+            if(File::exists($partner->img))
             {
-                File::delete($slider->img);
+                File::delete($partner->img);
             }
             $ext=$request->img->extension();
-            $fileName=rand(1,100).time().'.'.$ext;
-            $fileNameWithUpload='image/slider/'.$fileName;
-            $request->img->move('image/slider/',$fileName);
-            $slider->img=$fileNameWithUpload;
-
+            $fileName=rand(0,100).time().'.'.$ext;
+            $fileNameWithUpload='image/partner/'.$fileName;
+            $request->img->move('image/partner/',$fileName);
+            $data['img']=$fileNameWithUpload;
         }
 
-        $slider->title=$request->title;
-        $slider->desc=$request->desc;
-        $slider->link=$request->link;
-        $slider->save();
-
-        toastr()->success('updated slider information.');
-        return redirect()->route('slider.index');    
+        
+        $partner->update($data);
+        toastr()->success('updated partner information.');
+        return redirect()->route('partner.index');
     }
 
     /**
@@ -153,14 +142,14 @@ class SliderController extends Controller
     public function delete($id)
     {
         try {
-            $slider=Slider::findOrFail($id);
-            if(File::exists($slider->img))
+            $partner=Partner::findOrFail($id);
+            if(File::exists($partner->img))
             {
-                File::delete($slider->img);
+                File::delete($partner->img);
             }
-        $slider->delete();
+        $partner->delete();
         return response()->json([
-            'message' => 'Your Slider have been successfully deleted',
+            'message' => 'Your Partner have been successfully deleted',
             'code' => 204,
         ]);
         } catch (\Throwable $th) {

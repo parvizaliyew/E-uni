@@ -21,7 +21,7 @@
         <div class="icon_menu">
             <i class="ti-calendar"></i>
         </div>
-        <span>News&Events</span>
+        <span>News & Events</span>
         </a>
     </li>
     <li class="mm-active">
@@ -37,16 +37,35 @@
         <div class="icon_menu">
             <i class="ti-medall"></i>
         </div>
-        <span>Leadership</span>
+        <span>Leadership & Staff</span>
         </a>
     </li>
     <li class="mm-active">
         <a  href="{{ route('programs-degree.index') }}" aria-expanded="false">
         <div class="icon_menu">
-            <i class="ti-medall"></i>
+            <i class="ti-stats-up"></i>
         </div>
         <span>Proqram's Degree</span>
         </a>
     </li>
+
+    <li class="mm-active">
+        <a  href="{{ route('donations.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+            <i class="ti-bookmark-alt"></i>
+        </div>
+        <span>Donations</span>
+        </a>
+    </li>
+
+    <li class="mm-active">
+        <a  href="{{ route('partner.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+            <i class="ti-bookmark-alt"></i>
+        </div>
+        <span>Partner</span>
+        </a>
+    </li>
+
     </ul>
     </nav>

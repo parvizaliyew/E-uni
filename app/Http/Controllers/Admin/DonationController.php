@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Slider;
-use Illuminate\Support\Str;
+use App\Models\Donation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
-class SliderController extends Controller
+class DonationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +17,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $sliders=Slider::get();
-        return view('admin.pages.slider.index',compact('sliders'));
+        $donations=Donation::get();
+        return view('admin.pages.donation.index',compact('donations'));
     }
 
     /**
@@ -29,8 +28,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.slider.create');
-
+        return view('admin.pages.donation.create');
     }
 
     /**
@@ -41,20 +39,17 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        $sliders=new Slider;
+        $donation=new Donation;
         $data = $request->all();
         $validator = Validator::make($data, [
-            'title'   => 'required',
-            'link'   => 'required',
-            'desc' => 'required',
+            'date'   => 'required',
             'img'   => 'required|max:256|mimes:png,jpg,svg,webp',
         ],
         [
-            'title.required'=>'enter the title',
-            'link.required'=>'enter the link',
-            'desc.required'=>'enter the description',
+            'date.required'=>'Please enter the date',
             'img.required'=>'Please enter the img',
-            'img.mimes'=>'The image should be in png ,jpg,svg,webp format',
+            'img.mimes'=>' The image should be in png ,jpg,svg,webp format',
+
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
@@ -64,16 +59,16 @@ class SliderController extends Controller
         {
             $ext=$request->img->extension();
             $fileName=rand(1,100).time().'.'.$ext;
-            $fileNameWithUpload='image/slider/'.$fileName;
-            $request->img->move('image/slider/',$fileName);
+            $fileNameWithUpload='image/donations/'.$fileName;
+            $request->img->move('image/donations/',$fileName);
             $data['img']=$fileNameWithUpload;
         }
         
 
-        Slider::create($data);
+        Donation::create($data);
 
-        toastr()->success('added slider information.');
-        return redirect()->route('slider.index');
+        toastr()->success('added donation information.');
+        return redirect()->route('donations.index');
     }
 
     /**
@@ -95,9 +90,8 @@ class SliderController extends Controller
      */
     public function edit($id)
     {
-        $slider=Slider::findOrFail($id);
-
-        return view('admin.pages.slider.edit',compact('slider'));
+        $donation=Donation::findOrFail($id);
+        return view('admin.pages.donation.edit',compact('donation'));
 
     }
 
@@ -110,38 +104,37 @@ class SliderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $slider=Slider::findOrFail($id);
-        $data = $request->all();
+        $donation=Donation::findOrFail($id);
+        $data=$request->all();
         $validator = Validator::make($data, [
-            'title'   => 'required',
-            'desc'    => 'required',
-            'link'    => 'required',
+            'img'   => 'mimes:png,jpg,svg,webp',
+        ],
+        [
+            'img.mimes'=>' The image should be in png ,jpg,svg,webp format',
         ]);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator);
+
+        if($validator->fails())
+        {
+             return redirect()->back()->withErrors($validator);
         }
 
         if($request->has('img'))
         {
-            if(File::exists($slider->img))
+            if(File::exists($donation->img))
             {
-                File::delete($slider->img);
+                File::delete($donation->img);
             }
             $ext=$request->img->extension();
-            $fileName=rand(1,100).time().'.'.$ext;
-            $fileNameWithUpload='image/slider/'.$fileName;
-            $request->img->move('image/slider/',$fileName);
-            $slider->img=$fileNameWithUpload;
-
+            $fileName=rand(0,100).time().'.'.$ext;
+            $fileNameWithUpload='image/donations/'.$fileName;
+            $request->img->move('image/donations/',$fileName);
+            $data['img']=$fileNameWithUpload;
         }
 
-        $slider->title=$request->title;
-        $slider->desc=$request->desc;
-        $slider->link=$request->link;
-        $slider->save();
-
-        toastr()->success('updated slider information.');
-        return redirect()->route('slider.index');    
+        
+        $donation->update($data);
+        toastr()->success('updated donation information.');
+        return redirect()->route('donations.index');
     }
 
     /**
@@ -153,14 +146,14 @@ class SliderController extends Controller
     public function delete($id)
     {
         try {
-            $slider=Slider::findOrFail($id);
-            if(File::exists($slider->img))
+            $donation=Donation::findOrFail($id);
+            if(File::exists($donation->img))
             {
-                File::delete($slider->img);
+                File::delete($donation->img);
             }
-        $slider->delete();
+        $donation->delete();
         return response()->json([
-            'message' => 'Your Slider have been successfully deleted',
+            'message' => 'Your donation have been successfully deleted',
             'code' => 204,
         ]);
         } catch (\Throwable $th) {

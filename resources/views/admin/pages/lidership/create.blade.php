@@ -34,7 +34,7 @@ Leadership & staff
                     <label for="">Profession</label>
                     <select name="type" class="form-control">
                      <option value="">choose</option>
-                     <option value="1">liderliderlider</option>
+                     <option value="1">Leadership</option>
                      <option value="2">Staff</option>
                      <option value="3">Teacher</option>
                     </select>

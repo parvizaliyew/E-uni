@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LiderController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\DonationController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsEventController;
 use App\Http\Controllers\Admin\ProgramDegreController;
@@ -26,6 +28,7 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () 
 {
     Route::get('/',[DashboardController::class,'index'])->name('admin.index');
+
     Route::resource('/news-event', NewsEventController::class);
     Route::get('/news-event/delete/{id}',[NewsEventController::class,'delete'])->name('news-event.delete');
 
@@ -38,4 +41,9 @@ Route::prefix('admin')->group(function ()
     Route::resource('/programs-degree', ProgramDegreController::class);
     Route::get('/programs-degree/delete/{id}', [ProgramDegreController::class,'delete'])->name('programs-degree.delete');
 
+    Route::resource('/donations', DonationController::class);
+    Route::get('/donation/delete/{id}', [DonationController::class,'delete'])->name('donations.delete');
+
+    Route::resource('/partner', PartnerController::class);
+    Route::get('/partner/delete/{id}', [PartnerController::class,'delete'])->name('partner.delete');
 });
