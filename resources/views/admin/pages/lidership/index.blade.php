@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-LeaderShip
+Leadership & staff
 @endsection
 
 @section('content')
@@ -15,7 +15,8 @@ LeaderShip
                         <div class="white_card_header">
                             <div class="box_header m-0">
                                 <div class="main-title">
-                                    <h3 class="m-0">LeaderShip
+                                    <h3 class="m-0">Leadership & staff
+
                                     </h3>
                                 </div>
                             </div>
@@ -38,6 +39,7 @@ LeaderShip
                                             <th scope="col">#</th>
                                             <th scope="col">Image</th>
                                             <th scope="col">Name</th>
+                                            <th scope="col">type</th>
                                             <th scope="col">Prosesler</th>
                                         </tr>
                                     </thead>
@@ -49,6 +51,14 @@ LeaderShip
                                             <td>{{ $loop->index+1 }}</td>
                                             <td><img width="70px" height="70px" src="{{ asset($item->img) }}" alt=""></td>
                                             <td>{{ Str::limit($item->translate('name'),20,'...') }}</td>
+                                            <td>
+                                                @if ($item->type===1)
+                                                Leadership
+                                                @elseif($item->type===2)
+                                                Staff   
+                                                @else
+                                                Teacher 
+                                                @endif</td>
                                             <td class="d-flex" style="font-size: 20px;">
                                                 <a class="btn btn-primary" href="{{ route('leadership.edit',$item->id) }}"><i class="ti-pencil"></i></a>
                                                 <a class="btn btn-danger delete" href="{{ route('leadership.delete',$item->id) }}"><i class="ti-trash"></i></a>

@@ -30,7 +30,20 @@ LeaderShip
         @csrf
         @method("PUT")
         <div class="row mb-3">
-                <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label  for="">Type</label>
+                    <select name="type" class="form-control">
+                     <option {{ $lider->type===1 ? 'selected' : '' }} value="1">Leadership</option>
+                     <option {{ $lider->type===2 ? 'selected' : '' }} value="2">Staff</option>
+                     <option {{ $lider->type===3 ? 'selected' : '' }} value="3">Teacher</option>
+                    </select>
+                </div>
+                @error('type')
+                <span class="text-danger mt-2">{{ $message }}</span> <br>
+                @enderror
+              </div>
+                <div class="col-md-6">
                     <div class="form-group translate">
                         <label for="">Book Name</label>
                         <input type="hidden" name="book_name" value='{{ $lider->book_name }}'>

@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-LeaderShip
+Leadership & staff
 @endsection
 @section('content')
 <div class="main_content_iner ">
@@ -10,7 +10,7 @@ LeaderShip
         <div class="white_card_header">
         <div class="box_header m-0">
         <div class="main-title">
-        <h3 class="m-0">LeaderShip Add</h3>
+        <h3 class="m-0">Leadership & staff Add</h3>
         </div>
         <div class="page-header">
             <nav aria-label="breadcrumb">
@@ -29,7 +29,21 @@ LeaderShip
         <form method="POST" enctype="multipart/form-data" action="{{ route('leadership.store') }}">
         @csrf
         <div class="row mb-3">
-                <div class="col-md-6">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Profession</label>
+                    <select name="type" class="form-control">
+                     <option value="">choose</option>
+                     <option value="1">liderliderlider</option>
+                     <option value="2">Staff</option>
+                     <option value="3">Teacher</option>
+                    </select>
+                </div>
+                @error('type')
+                <span class="text-danger mt-2">{{ $message }}</span> <br>
+                @enderror
+              </div>
+                <div class="col-md-4">
                     <label class="form-group" for="">Image</label>
                     <div class="mb-3">
                         <input name="img" class="form-control" type="file" id="formFile">
@@ -39,7 +53,7 @@ LeaderShip
                     @enderror
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group translate">
                         <label for="">Book Name</label>
                         <input type="hidden" name="book_name" value='{"az":"","en":"","de":""}'>

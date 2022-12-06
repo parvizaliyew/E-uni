@@ -43,16 +43,12 @@ class LiderController extends Controller
         $request->all();
         $data = $request->all();
         $validator = Validator::make($data, [
-            'name'   => 'required',
-            'desc'   => 'required',
-            'short_desc' => 'required',
+            'type'   => 'required',
             'img'   => 'required|max:256|mimes:png,jpg,svg,webp',
         ],
         [
-            'name.required'=>'enter the title',
-            'desc.required'=>'desc the link',
-            'short_desc.required'=>'enter the short description',
-            'img.required'=>'enter the img',
+            'type.required'=>'Please enter the profession',
+            'img.required'=>'Please enter the img',
             'img.mimes'=>'The image should be in png ,jpg,svg,webp format',
 
         ]);
@@ -129,6 +125,7 @@ class LiderController extends Controller
         $lider->short_desc=$request->short_desc;
         $lider->name=$request->name;
         $lider->book_name=$request->book_name;
+        $lider->type=$request->type;
         $lider->save();
 
         toastr()->success('updated lider information.');

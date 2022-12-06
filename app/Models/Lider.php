@@ -14,6 +14,7 @@ class Lider extends Model implements ITranslatable
     [
       'position',
       'name',
+      'type',
       'book_name',
       'desc',
       'img',

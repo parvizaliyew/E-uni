@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('liders', function (Blueprint $table) {
             $table->id();
             $table->string('position');
+            $table->Integer('type');
             $table->string('name');
-            $table->text('desc');
-            $table->string('short_desc');
+            $table->text('desc')->nullable();
+            $table->string('short_desc')->nullable();
             $table->string('book_name')->nullable();
             $table->string('img');
             $table->timestamps();
