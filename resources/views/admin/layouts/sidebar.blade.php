@@ -93,5 +93,14 @@
         <span>Student of the month</span>
         </a>
     </li>
+
+    <li class="mm-active">
+        <a  href="{{ route('counter.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+            <i class="ti-bookmark-alt"></i>
+        </div>
+        <span>Counter</span>
+        </a>
+    </li>
     </ul>
     </nav>

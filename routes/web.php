@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LiderController;
 use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DonationController;
@@ -59,4 +60,6 @@ Route::prefix('admin')->group(function ()
     Route::get('/setting-index', [SettingController::class,'index'])->name('setting.index');
     Route::post('/setting-update/{id}', [SettingController::class,'update'])->name('setting.update');
 
+    Route::get('/counter-index', [CounterController::class,'index'])->name('counter.index');
+    Route::post('/counter-update/{id}', [CounterController::class,'update'])->name('counter.update');
 });
