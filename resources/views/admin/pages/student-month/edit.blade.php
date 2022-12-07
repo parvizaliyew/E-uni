@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-Program Degree
+Student of the month
 @endsection
 @section('content')
 <div class="main_content_iner ">
@@ -10,7 +10,7 @@ Program Degree
         <div class="white_card_header">
         <div class="box_header m-0">
         <div class="main-title">
-        <h3 class="m-0">Program Degree Update</h3>
+        <h3 class="m-0">Student of the month Update</h3>
         </div>
         <div class="page-header">
             <nav aria-label="breadcrumb">
@@ -26,31 +26,29 @@ Program Degree
         </div>
         <div class="white_card_body">
         <div class="card-body">
-        <form method="POST" enctype="multipart/form-data" action="{{ route('programs-degree.update',$program->id) }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('student-month.update',$student->id) }}">
         @csrf
         @method("PUT")
+ 
         <div class="row mb-3">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label  for="">Type</label>
-                        <select name="type" class="form-control">
-                         <option {{ $program->type===1 ? 'selected' : '' }} value="1">Bachelor Programs</option>
-                         <option {{ $program->type===2 ? 'selected' : '' }} value="2">Master degree</option>
-                         <option {{ $program->type===3 ? 'selected' : '' }} value="3">PhD</option>
-                        </select>
-                    </div>
-                    @error('type')
-                    <span class="text-danger mt-2">{{ $message }}</span> <br>
-                    @enderror
-                  </div>
+            <div class="col-md-12">
+               <div class="form-group translate">
+                   <label for="">Specialty</label>
+                   <input type="hidden" name="specialty" value='{{ $student->specialty }}'>
+                   <input value="{{ $student->translate('specialty') }}"  class="form-control">
+               </div>
+               @error('name')
+               <span class="text-danger mt-2">{{ $message }}</span> <br>
+               @enderror
             </div>
+           </div>
 
         <div class="row mb-3">
          <div class="col-md-12">
             <div class="form-group translate">
                 <label for="">Name</label>
-                <input type="hidden" name="name" value='{{ $program->name }}'>
-                <input value="{{ $program->translate('name') }}"  class="form-control">
+                <input type="hidden" name="name" value='{{ $student->name }}'>
+                <input value="{{ $student->translate('name') }}"  class="form-control">
             </div>
             @error('name')
             <span class="text-danger mt-2">{{ $message }}</span> <br>
@@ -58,25 +56,14 @@ Program Degree
          </div>
         </div>
 
-        <div class="row mb-3">
-            <div class="col-md-12">
-               <div class="form-group translate">
-                   <label for="">Title</label>
-                   <input type="hidden" name="title" value='{{ $program->title }}'>
-                   <input value="{{ $program->translate('title') }}"  class="form-control">
-               </div>
-               @error('title')
-               <span class="text-danger mt-2">{{ $message }}</span> <br>
-               @enderror
-            </div>
-           </div>
+   
 
            <div class="row mb-3">
             <div class="col-md-12">
                <div class="form-group translate">
                    <label for="">Short Description</label>
-                   <input type="hidden" name="short_desc" value='{{ $program->short_desc }}'>
-                   <textarea   class="form-control">{{ $program->translate('short_desc') }}</textarea>
+                   <input type="hidden" name="short_desc" value='{{ $student->short_desc }}'>
+                   <textarea   class="form-control">{{ $student->translate('short_desc') }}</textarea>
                 </div>
                @error('short_desc')
                <span class="text-danger mt-2">{{ $message }}</span> <br>
@@ -88,8 +75,8 @@ Program Degree
             <div class="col-md-12">
                <div class="form-group translate">
                    <label for="">Description</label>
-                   <input type="hidden" name="desc" value='{{ $program->desc }}'>
-                   <textarea id="editor"  class="form-control">{{ $program->translate('desc') }}</textarea>
+                   <input type="hidden" name="desc" value='{{ $student->desc }}'>
+                   <textarea  class="form-control">{{ $student->translate('desc') }}</textarea>
                 </div>
                @error('desc')
                <span class="text-danger mt-2">{{ $message }}</span> <br>
@@ -99,18 +86,8 @@ Program Degree
 
         <div class="row mb-3">
         <div class="col-md-6">
-            <label class="form-group" for="">logo</label> <br>
-            <img width="455px" height="300px"  src="{{ asset($program->logo) }}" alt="">
-            <div class="mb-3">
-                <input name="logo" class="form-control" type="file" id="formFile">
-            </div>
-            @error('logo')
-            <span class="text-danger mt-2">{{ $message }}</span> 
-            @enderror
-        </div>
-        <div class="col-md-6">
             <label class="form-group" for="">Image</label> <br>
-            <img width="450px" height="300px"  src="{{ asset($program->img) }}" alt="">
+            <img width="450px" height="300px"  src="{{ asset($student->img) }}" alt="">
 
             <div class="mb-3">
                 <input  name="img" class="form-control" type="file" id="formFile">
@@ -120,7 +97,7 @@ Program Degree
             @enderror
         </div>
     </div>
-        <a href="{{ route('programs-degree.index') }}" class="btn btn-success">Back</a>
+        <a href="{{ route('student-month.index') }}" class="btn btn-success">Back</a>
         <button type="submit" class="btn btn-primary">Update</button>
         </form>
         </div>

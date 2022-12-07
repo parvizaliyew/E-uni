@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('student_months', function (Blueprint $table) {
             $table->id();
+            $table->string('specialty');
+            $table->string('name');
+            $table->string('desc');
+            $table->string('short_desc');
+            $table->string('img');
             $table->timestamps();
         });
     }

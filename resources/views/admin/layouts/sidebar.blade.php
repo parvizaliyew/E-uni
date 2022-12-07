@@ -75,5 +75,14 @@
         <span>Alumni</span>
         </a>
     </li>
+
+    <li class="mm-active">
+        <a  href="{{ route('student-month.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+            <i class="ti-bookmark-alt"></i>
+        </div>
+        <span>Student of the month</span>
+        </a>
+    </li>
     </ul>
     </nav>

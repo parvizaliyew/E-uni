@@ -45,7 +45,7 @@ class ProgramDegreController extends Controller
         $validator = Validator::make($data, [
             'type'    => 'required',
             'logo'   => 'required|max:256|mimes:png,jpg,svg,webp',
-            'img'   => 'required|max:256|mimes:png,jpg,svg,webp',
+            'img'   => 'required|mimes:png,jpg,svg,webp',
 
         ],
         [

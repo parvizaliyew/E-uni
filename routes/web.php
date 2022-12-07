@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DonationController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsEventController;
 use App\Http\Controllers\Admin\ProgramDegreController;
+use App\Http\Controllers\Admin\StudentMonthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,4 +51,7 @@ Route::prefix('admin')->group(function ()
 
     Route::resource('/alumni', AlumniController::class);
     Route::get('/alumni/delete/{id}', [AlumniController::class,'delete'])->name('alumni.delete');
+
+    Route::resource('/student-month', StudentMonthController::class);
+    Route::get('/student-month/delete/{id}', [StudentMonthController::class,'delete'])->name('student-month.delete');
 });
