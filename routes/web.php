@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\LiderController;
 use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DonationController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsEventController;
@@ -54,4 +55,8 @@ Route::prefix('admin')->group(function ()
 
     Route::resource('/student-month', StudentMonthController::class);
     Route::get('/student-month/delete/{id}', [StudentMonthController::class,'delete'])->name('student-month.delete');
+
+    Route::get('/setting-index', [SettingController::class,'index'])->name('setting.index');
+    Route::post('/setting-update/{id}', [SettingController::class,'update'])->name('setting.update');
+
 });

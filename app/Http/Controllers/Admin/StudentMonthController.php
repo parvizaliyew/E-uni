@@ -136,7 +136,7 @@ class StudentMonthController extends Controller
            
         $student->delete();
         return response()->json([
-            'message' => 'Your Programs degree have been successfully deleted',
+            'message' => 'Your Student of the month have been successfully deleted',
             'code' => 204,
         ]);
         } catch (\Throwable $th) {

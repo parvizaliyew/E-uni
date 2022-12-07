@@ -17,6 +17,15 @@
     </li>
 
     <li class="mm-active">
+        <a  href="{{ route('setting.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+        <img src="{{asset('manager/')}}/img/menu-icon/dashboard.svg" alt="">
+        </div>
+        <span>Setting</span>
+        </a>
+    </li>
+
+    <li class="mm-active">
         <a  href="{{ route('news-event.index') }}" aria-expanded="false">
         <div class="icon_menu">
             <i class="ti-calendar"></i>
