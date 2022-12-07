@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Lider;
+use App\Models\Alumni;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
-class LiderController extends Controller
+class AlumniController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class LiderController extends Controller
      */
     public function index()
     {
-        $liders=Lider::get();
-        return view('admin.pages.lidership.index',compact('liders'));
+        $alumnis=Alumni::get();
+        return view('admin.pages.alumni.index',compact('alumnis'));
     }
 
     /**
@@ -28,7 +28,7 @@ class LiderController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.lidership.create');
+        return view('admin.pages.alumni.create');
     }
 
     /**
@@ -39,15 +39,15 @@ class LiderController extends Controller
      */
     public function store(Request $request)
     {
-        $liders=new Lider;
+        $alumni=new Alumni;
         $request->all();
         $data = $request->all();
         $validator = Validator::make($data, [
-            'type'   => 'required',
+            'ln'   => 'required',
             'img'   => 'required|max:256|mimes:png,jpg,svg,webp',
         ],
         [
-            'type.required'=>'Please enter the profession',
+            'ln.required'=>'Please enter the linkedin',
             'img.required'=>'Please enter the img',
             'img.mimes'=>'The image should be in png ,jpg,svg,webp format',
 
@@ -60,17 +60,17 @@ class LiderController extends Controller
         {
             $ext=$request->img->extension();
             $fileName=rand(1,100).time().'.'.$ext;
-            $fileNameWithUpload='image/lider/'.$fileName;
-            $request->img->move('image/lider/',$fileName);
+            $fileNameWithUpload='image/alumni/'.$fileName;
+            $request->img->move('image/alumni/',$fileName);
             $data['img']=$fileNameWithUpload;
         }
         
 
-        Lider::create($data);
+        Alumni::create($data);
 
-        toastr()->success('added leadership information.');
-        return redirect()->route('leadership.index'); 
-       }
+        toastr()->success('added alumni information.');
+        return redirect()->route('alumni.index'); 
+    }
 
     /**
      * Display the specified resource.
@@ -91,8 +91,8 @@ class LiderController extends Controller
      */
     public function edit($id)
     {
-        $lider=Lider::findOrFail($id);
-        return view('admin.pages.lidership.edit',compact('lider'));
+        $alumni=Alumni::findOrFail($id);
+        return view('admin.pages.alumni.edit',compact('alumni'));
     }
 
     /**
@@ -104,33 +104,23 @@ class LiderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $lider=Lider::findOrFail($id);
+        $alumni=Alumni::findOrFail($id);
         $data = $request->all();
-
         if($request->has('img'))
         {
-            if(File::exists($lider->img))
+            if(File::exists($alumni->img))
             {
-                File::delete($lider->img);
+                File::delete($alumni->img);
             }
             $ext=$request->img->extension();
             $fileName=rand(1,100).time().'.'.$ext;
-            $fileNameWithUpload='image/lider/'.$fileName;
-            $request->img->move('image/lider/',$fileName);
-            $lider->img=$fileNameWithUpload;
-
+            $fileNameWithUpload='image/alumni/'.$fileName;
+            $request->img->move('image/alumni/',$fileName);
+            $data['img']=$fileNameWithUpload;
         }
-
-        $lider->position=$request->position;
-        $lider->desc=$request->desc;
-        $lider->short_desc=$request->short_desc;
-        $lider->name=$request->name;
-        $lider->book_name=$request->book_name;
-        $lider->type=$request->type;
-        $lider->save();
-
-        toastr()->success('updated lider information.');
-        return redirect()->route('leadership.index');
+        $alumni->update($data);
+        toastr()->success('updated alumni information.');
+        return redirect()->route('alumni.index');
     }
 
     /**
@@ -142,12 +132,12 @@ class LiderController extends Controller
     public function delete($id)
     {
         try {
-            $lider=Lider::findOrFail($id);
-            if(File::exists($lider->img))
+            $alumni=Alumni::findOrFail($id);
+            if(File::exists($alumni->img))
             {
-                File::delete($lider->img);
+                File::delete($alumni->img);
             }
-        $lider->delete();
+        $alumni->delete();
         return response()->json([
             'message' => 'Your lider have been successfully deleted',
             'code' => 204,
@@ -158,5 +148,4 @@ class LiderController extends Controller
                 'code' => 500,
             ]);}
     }
-    
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LiderController;
+use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\DonationController;
@@ -46,4 +47,7 @@ Route::prefix('admin')->group(function ()
 
     Route::resource('/partner', PartnerController::class);
     Route::get('/partner/delete/{id}', [PartnerController::class,'delete'])->name('partner.delete');
+
+    Route::resource('/alumni', AlumniController::class);
+    Route::get('/alumni/delete/{id}', [AlumniController::class,'delete'])->name('alumni.delete');
 });

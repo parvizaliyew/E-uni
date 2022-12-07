@@ -67,5 +67,13 @@
         </a>
     </li>
 
+    <li class="mm-active">
+        <a  href="{{ route('alumni.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+            <i class="ti-bookmark-alt"></i>
+        </div>
+        <span>Alumni</span>
+        </a>
+    </li>
     </ul>
     </nav>
