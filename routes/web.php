@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DonationController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsEventController;
+use App\Http\Controllers\Admin\InstaGaleryController;
 use App\Http\Controllers\Admin\ProgramDegreController;
 use App\Http\Controllers\Admin\StudentMonthController;
 
@@ -62,4 +63,7 @@ Route::prefix('admin')->group(function ()
 
     Route::get('/counter-index', [CounterController::class,'index'])->name('counter.index');
     Route::post('/counter-update/{id}', [CounterController::class,'update'])->name('counter.update');
+    
+    Route::resource('/instagalery', InstaGaleryController::class);
+    Route::get('/instagalery/delete/{id}', [InstaGaleryController::class,'delete'])->name('instagalery.delete');
 });

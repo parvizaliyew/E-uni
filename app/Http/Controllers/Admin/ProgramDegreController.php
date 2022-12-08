@@ -49,10 +49,11 @@ class ProgramDegreController extends Controller
 
         ],
         [
-           'type.required'=>'Type required' ,
-           'logo.required'=>'Logo required' ,
-           'img.required'=>'Image required' 
-
+           'type.required'=>'Please enter Type ' ,
+           'logo.required'=>'Please enter the Logo ' ,
+           'logo.mimes'=>'The logo should be in png ,jpg,svg,webp format',
+           'img.required'=>'Please enter the img',
+           'img.mimes'=>'The image should be in png ,jpg,svg,webp format',
 
         ]);
         if ($validator->fails()) {
