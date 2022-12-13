@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LiderController;
+use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\CounterController;
@@ -25,9 +26,17 @@ use App\Http\Controllers\Admin\StudentMonthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+$locale = Request::segment(1);
+
+if(in_array($locale, ['az','en','de'])){
+    App::setLocale($locale);
+}else{
+    App::setLocale('az');
+
+    $locale = '';
+}
 
 
 Route::prefix('admin')->group(function () 
@@ -67,3 +76,29 @@ Route::prefix('admin')->group(function ()
     Route::resource('/instagalery', InstaGaleryController::class);
     Route::get('/instagalery/delete/{id}', [InstaGaleryController::class,'delete'])->name('instagalery.delete');
 });
+
+//********* FRONT *********//
+Route::get('/',[FrontController::class,'index'])->name('home.az');
+Route::get('/en',[FrontController::class,'index'])->name('home.en');
+Route::get('/de',[FrontController::class,'index'])->name('home.de');
+
+Route::get('/iane',[FrontController::class,'donation'])->name('donation.az');
+Route::get('/en/donation',[FrontController::class,'donation'])->name('donation.en');
+Route::get('/de/spende',[FrontController::class,'donation'])->name('donation.de');
+Route::post('/donation/post',[FrontController::class,'donation_post'])->name('donation_post');
+
+Route::get('/xeberler-tedbirler',[FrontController::class,'news_event'])->name('news-evnt.az');
+Route::get('/en/news-events',[FrontController::class,'news_event'])->name('news-evnt.en');
+Route::get('/de/nachrichten-veranstaltungen',[FrontController::class,'news_event'])->name('news-evnt.de');
+
+Route::get('/xeber/{slug}',[FrontController::class,'news_single'])->name('news_single.az');
+Route::get('/en/news/{slug}',[FrontController::class,'news_single'])->name('news_single.en');
+Route::get('/de/nachrichten/{slug}',[FrontController::class,'news_single'])->name('news_single.de');
+
+Route::get('/tedbir/{slug}',[FrontController::class,'news_single'])->name('event_single.az');
+Route::get('/en/event/{slug}',[FrontController::class,'news_single'])->name('event_single.en');
+Route::get('/de/messen/{slug}',[FrontController::class,'news_single'])->name('event_single.de');
+
+Route::get('/liderlik&heyet',[FrontController::class,'lid_heyet'])->name('lid_heyet.az');
+Route::get('/en/leadership&staff',[FrontController::class,'lid_heyet'])->name('lid_heyet.en');
+Route::get('/de/führung&mitarbeiter',[FrontController::class,'lid_heyet'])->name('lid_heyet.de');

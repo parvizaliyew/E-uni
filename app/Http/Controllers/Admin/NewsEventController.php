@@ -19,7 +19,7 @@ class NewsEventController extends Controller
      */
     public function index()
     {
-        $n_e=NewsEvent::get();
+        $n_e=NewsEvent::orderBy('important','desc')->get();
         return view('admin.pages.event_news.index',compact('n_e'));
     }
 
@@ -49,8 +49,15 @@ class NewsEventController extends Controller
             'type'    => 'required',
             'desc' => 'required',
             'date' => 'required',
-            'img'   => 'required|max:256|mimes:png,jpg,svg,webp',
-        ]);
+            'img'   => 'required|mimes:png,jpg,svg,webp',
+        ],
+        [
+            'date.required'=>'Please enter the date',
+            'type.required'=>'Please enter the type',
+            'img.required'=>'Please enter the img',
+            'img.mimes'=>'The image should be in png ,jpg,svg,webp format',
+        ]
+    );
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
         }
@@ -139,14 +146,7 @@ class NewsEventController extends Controller
         {
             $data['slug'][$key] = Str::slug($title);
         }
-
-        $news_event->title=$request->title;
-        $news_event->short_desc=$request->short_desc;
-        $news_event->desc=$request->desc;
-        $news_event->slug=$data['slug'];
-        $news_event->date=$request->date;
-        $news_event->type=$request->type;
-        $news_event->save();
+        $news_event->update($data);      
         toastr()->success('updated news or event information.');
         return redirect()->route('news-event.index');    }
 

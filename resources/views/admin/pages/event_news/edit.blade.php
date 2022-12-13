@@ -30,6 +30,28 @@ News&Event
         @csrf
         @method("PUT")
         <div class="row mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="important" value="1"  @if ($news_event->important==1)
+                checked
+                @else
+                    ''
+                @endif id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Important
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" name="important"  type="checkbox" value="0" id="flexCheckChecked" @if ($news_event->important==0)
+                checked
+                @else
+                    ''
+                @endif>
+                <label class="form-check-label" for="flexCheckChecked">
+                  Dont Important
+                </label>
+              </div>
+        </div>
+        <div class="row mb-3">
             <div class="col-md-6">
                <div class="form-group">
                    <label for="">Type</label>

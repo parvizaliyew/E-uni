@@ -29,6 +29,17 @@ Instagram Galery
         <form method="POST" enctype="multipart/form-data" action="{{ route('instagalery.store') }}">
         @csrf
         <div class="row mb-3">
+            <div class="col-md-12">
+                <label class="form-group" for="">link</label>
+                <div class="mb-3">  
+                    <input name="link" class="form-control" type="text" id="formFile">
+                </div>
+                @error('link')
+                <span class="text-danger mt-2">{{ $message }}</span> 
+                @enderror
+            </div>
+        </div>
+        <div class="row mb-3">
                 <div class="col-md-6">
                     <label class="form-group" for="">Image</label>
                     <div class="mb-3">
@@ -39,6 +50,7 @@ Instagram Galery
                     @enderror
                 </div>
             </div>
+
 
         <a href="{{ route('instagalery.index') }}" class="btn btn-success">Back</a>
         <button type="submit" class="btn btn-primary">Add</button>

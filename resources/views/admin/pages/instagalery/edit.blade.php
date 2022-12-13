@@ -30,6 +30,15 @@ Insta Galery
         @csrf
         @method("PUT")
         <div class="row mb-3">
+            <div class="col-md-12">
+                <label class="form-group" for="">Link</label> <br> <br>
+                    <input name="link" class="form-control" type="text" value="{{ $galery->link }}" id="formFile">
+                @error('link')
+                <span class="text-danger mt-2">{{ $message }}</span> 
+                @enderror
+        </div>
+    </div>
+        <div class="row mb-3">
         <div class="col-md-6">
             <label class="form-group" for="">Image</label> <br>
             <img width="400px" height="300px" src="{{ asset($galery->img) }}" alt=""> 
@@ -41,7 +50,9 @@ Insta Galery
             <span class="text-danger mt-2">{{ $message }}</span> 
             @enderror
         </div>
-    </div>
+        </div>
+
+
 
         <a href="{{ route('instagalery.index') }}" class="btn btn-success">Back</a>
         <button type="submit" class="btn btn-primary">Update</button>

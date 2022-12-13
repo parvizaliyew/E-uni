@@ -29,6 +29,20 @@ News&Event
         <form method="POST" enctype="multipart/form-data" action="{{ route('news-event.store') }}">
         @csrf
         <div class="row mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="important" value="1" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Important
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" name="important"  type="checkbox" value="0" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                  Dont Important
+                </label>
+              </div>
+        </div>
+        <div class="row mb-3">
             <div class="col-md-4">
                <div class="form-group">
                    <label for="">Type</label>
@@ -61,6 +75,7 @@ News&Event
                     <span class="text-danger mt-2">{{ $message }}</span> 
                     @enderror
                 </div>
+               
            </div>
         <div class="row mb-3">
          <div class="col-md-12">

@@ -43,7 +43,7 @@ class DonationController extends Controller
         $data = $request->all();
         $validator = Validator::make($data, [
             'date'   => 'required',
-            'img'   => 'required|max:256|mimes:png,jpg,svg,webp',
+            'img'   => 'required|mimes:png,jpg,svg,webp',
         ],
         [
             'date.required'=>'Please enter the date',

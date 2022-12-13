@@ -17,7 +17,8 @@ class NewsEvent extends Model implements ITranslatable
       'slug',
       'img',
       'short_desc',
-      'date'
+      'date',
+      'important'
     ];
 protected $casts = [
     'title'=>'array',

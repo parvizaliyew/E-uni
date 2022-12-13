@@ -68,7 +68,7 @@ Donation's
                <div class="form-group translate">
                    <label for="">Donations</label>
                    <input type="hidden" name="donation_name" value='{"az":"","en":"","de":""}'>
-                   <textarea  class="form-control"></textarea>
+                   <input  class="form-control">
                 </div>
                @error('donation_name')
                <span class="text-danger mt-2">{{ $message }}</span> <br>

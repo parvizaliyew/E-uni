@@ -45,10 +45,12 @@ class InstaGaleryController extends Controller
         
         $validator = Validator::make($data, [
             'img'   => 'required|mimes:png,jpg,svg,webp',
+            'link'=>'required'
 
         ],
         [
             'img.required'=>'Please enter the img',
+            'link.required'=>'Please enter the link',
             'img.mimes'=>'The image should be in png ,jpg,svg,webp format', 
 
 
@@ -67,6 +69,7 @@ class InstaGaleryController extends Controller
         }
 
         $galery->img=$image;
+        $galery->link=$request->link;
         $galery->save();    
 
         toastr()->success('added instagram galery information.');
@@ -110,9 +113,11 @@ class InstaGaleryController extends Controller
         
         $validator = Validator::make($data, [
             'img'   => 'mimes:png,jpg,svg,webp',
+            'link'=>'required'
         ],
         [
             'img.mimes'=>'The image should be in png ,jpg,svg,webp format', 
+            'link.required'=>'Please enter the link',
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);

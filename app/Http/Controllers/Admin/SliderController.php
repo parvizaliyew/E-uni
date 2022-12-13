@@ -47,7 +47,7 @@ class SliderController extends Controller
             'title'   => 'required',
             'link'   => 'required',
             'desc' => 'required',
-            'img'   => 'required|max:256|mimes:png,jpg,svg,webp',
+            'img'   => 'required|mimes:png,jpg,svg,webp',
         ],
         [
             'title.required'=>'enter the title',

@@ -66,14 +66,12 @@ Donation's
             @enderror
          </div>
         </div>
-
-
         <div class="row mb-3">
             <div class="col-md-12">
                <div class="form-group translate">
                    <label for="">Donations</label>
                    <input type="hidden" name="donation_name" value='{{ $donation->donation_name }}'>
-                   <textarea  class="form-control">{{ $donation->translate('donation_name') }}</textarea>
+                   <input value="{{ $donation->translate('donation_name') }}" class="form-control">
                 </div>
                @error('donation_name')
                <span class="text-danger mt-2">{{ $message }}</span> <br>

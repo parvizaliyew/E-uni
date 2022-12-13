@@ -12,6 +12,7 @@ class InstaGalery extends Model
 
     protected $fillable=
     [
-        'img'
+        'img',
+        'link'
     ];
 }

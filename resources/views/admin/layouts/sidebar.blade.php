@@ -107,8 +107,8 @@
         <a  href="{{ route('instagalery.index') }}" aria-expanded="false">
         <div class="icon_menu">
             <i class="ti-bookmark-alt"></i>
-        </div>
-        <span>Instagram Galery</span>
+        </div>  
+        <span>Sosial Galery</span>
         </a>
     </li>
     </ul>

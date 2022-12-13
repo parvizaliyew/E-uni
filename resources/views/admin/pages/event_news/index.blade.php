@@ -39,6 +39,7 @@ News&Event
                                             <th scope="col">Image</th>
                                             <th scope="col">Title</th>
                                             <th scope="col">Short desc</th>
+                                            <th scope="col">Important</th>
                                             <th scope="col">Prosesler</th>
                                         </tr>
                                     </thead>
@@ -52,6 +53,11 @@ News&Event
                                             <td><img width="70px" height="70px" src="{{ asset($item->img) }}" alt=""></td>
                                             <td>{{ Str::limit($item->translate('title'),20,'...') }}</td>
                                             <td>{{ Str::limit($item->translate('short_desc'),20,'...') }}</td>
+                                           @if ($item->important==1)
+                                           <td><i class="fa fa-check" style="font-size:28px;color:green"></i></td>
+                                           @else
+                                               <th></th>
+                                           @endif
                                             <td class="d-flex" style="font-size: 20px;">
                                                 <a class="btn btn-primary" href="{{ route('news-event.edit',$item->id) }}"><i class="ti-pencil"></i></a>
                                                 <a class="btn btn-danger delete" href="{{ route('news-event.delete',$item->id) }}"><i class="ti-trash"></i></a>                                               
