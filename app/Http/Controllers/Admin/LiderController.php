@@ -44,13 +44,15 @@ class LiderController extends Controller
         $data = $request->all();
         $validator = Validator::make($data, [
             'type'   => 'required',
-            'img'   => 'required|max:256|mimes:png,jpg,svg,webp',
+            'img'   => 'required|mimes:png,jpg,svg,webp',
+            'cv'   => 'required|mimes:pdf',
         ],
         [
             'type.required'=>'Please enter the profession',
             'img.required'=>'Please enter the img',
+            'cv.required'=>'Please enter the cv',
             'img.mimes'=>'The image should be in png ,jpg,svg,webp format',
-
+            'cv.mimes'=>'The image should be in pdf format',
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
@@ -63,6 +65,14 @@ class LiderController extends Controller
             $fileNameWithUpload='image/lider/'.$fileName;
             $request->img->move('image/lider/',$fileName);
             $data['img']=$fileNameWithUpload;
+        }
+        if($request->has('cv'))
+        {
+            $ext=$request->cv->extension();
+            $fileName=rand(1,100).time().'.'.$ext;
+            $fileNameWithUpload='image/lider/'.$fileName;
+            $request->cv->move('image/lider/',$fileName);
+            $data['cv']=$fileNameWithUpload;
         }
         
 
@@ -106,7 +116,17 @@ class LiderController extends Controller
     {
         $lider=Lider::findOrFail($id);
         $data = $request->all();
-
+        $validator = Validator::make($data, [
+            'img'   => 'mimes:png,jpg,svg,webp',
+            'cv'   => 'mimes:pdf',
+        ],
+        [
+            'img.mimes'=>'The image should be in png ,jpg,svg,webp format',
+            'cv.mimes'=>'The image should be in pdf format',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
         if($request->has('img'))
         {
             if(File::exists($lider->img))
@@ -118,6 +138,19 @@ class LiderController extends Controller
             $fileNameWithUpload='image/lider/'.$fileName;
             $request->img->move('image/lider/',$fileName);
             $lider->img=$fileNameWithUpload;
+        }
+
+        if($request->has('cv'))
+        {
+            if(File::exists($lider->cv))
+            {
+                File::delete($lider->cv);
+            }
+            $ext=$request->cv->extension();
+            $fileName=rand(1,100).time().'.'.$ext;
+            $fileNameWithUpload='image/lider/'.$fileName;
+            $request->cv->move('image/lider/',$fileName);
+            $lider->cv=$fileNameWithUpload;
 
         }
 
@@ -146,6 +179,10 @@ class LiderController extends Controller
             if(File::exists($lider->img))
             {
                 File::delete($lider->img);
+            }
+            if(File::exists($lider->cv))
+            {
+                File::delete($lider->cv);
             }
         $lider->delete();
         return response()->json([

@@ -44,7 +44,7 @@ class AlumniController extends Controller
         $data = $request->all();
         $validator = Validator::make($data, [
             'ln'   => 'required',
-            'img'   => 'required|max:256|mimes:png,jpg,svg,webp',
+            'img'   => 'required|mimes:png,jpg,svg,webp',
         ],
         [
             'ln.required'=>'Please enter the linkedin',

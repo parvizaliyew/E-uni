@@ -19,6 +19,7 @@ class Lider extends Model implements ITranslatable
       'desc',
       'img',
       'short_desc',
+      'cv'
     ];
 
     protected $casts = [

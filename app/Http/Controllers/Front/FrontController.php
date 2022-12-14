@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Models\Lider;
+use App\Models\Alumni;
 use App\Models\Slider;
 use App\Models\Country;
 use App\Models\Donation;
@@ -43,7 +45,16 @@ class FrontController extends Controller
 
     public function lid_heyet()
     {
-        return view('front.pages.leadership');
+        $liders=Lider::where('type',1)->get();
+        $teachers=Lider::where('type',3)->get();
+        $staff=Lider::where('type',2)->get();
+        return view('front.pages.leadership',compact('liders','teachers','staff'));
+    }
+
+    public function alumni()
+    {
+        $alumnis=Alumni::orderBy('id','DESC')->get();
+        return view('front.pages.alumni',compact('alumnis'));
     }
 
     public function donation()
@@ -88,5 +99,10 @@ class FrontController extends Controller
             return redirect()->back();
     }
 
+    public function download($id)
+    {
+        $download=Lider::findOrFail($id);
+        return response()->download($download->cv) ?? abort('404');
+    }
     
 }

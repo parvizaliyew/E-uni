@@ -4,11 +4,14 @@
     E-Uni
 @endsection
 
+@section('lang')
+@include('front.layouts.lang')
+@endsection
 
 @section('content')
    <!--Home Start-->
    <section id="page-head">
-    <img src="./img/history-bg.png" alt="">
+    <img src="{{ asset('front/') }}/./img/history-bg.png" alt="">
     <div class="head-bg"></div>
     <div class="background">
         <div class="container">
@@ -78,63 +81,54 @@
 <section id="leadership">
     <div class="container">
         <div class="row">
+            @foreach ($liders as $key=>$val) 
+            @if ($key%2==0)
             <div class="leader-block">
                 <div class="about-images">
                     <div class="bg-big"></div>
                     <div class="about-bg-1"></div>
                     <div class="about-bg-2"></div>
                     <div class="about-bg-3"></div>
-                    <img class="about-img-1" src="./img/about-1.png" alt="">
+                    <img class="about-img-1" src="{{ asset($val->img) }}" alt="">
                 </div>
                 <div class="thumb-text">
                     <h3 class="thumb-head-1">
-                        Business Analyst at McKinsey's/ BBA 2020
+                        {{ $val->translate('position') }}
                     </h3>
                     <h2 class="thumb-head-2">
-                        Arzu Huseynzade
+                        {{ $val->translate('name') }}
                     </h2>
                     <p class="thumb-body">
-                        Being the pioneer oil and gas educational school across Europe and Asia, the Azerbaijan
-                        State
-                        Oil Academy (now Azerbaijan State Oil and Industry University (ASOIU)) was founded in
-                        November
-                        1920. During the period of its activities, ASOIU played a special role in developing
-                        national
-                        education.
+                        {{ $val->translate('desc') }}
                     </p>
                     <div class="thumb-comment">
                         <span>
                             “
                         </span>
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                            {{ $val->translate('short_desc') }}
                         </p>
                     </div>
                 </div>
             </div>
+            @else
             <div class="leader-block leader-block-2">
                 <div class="thumb-text">
                     <h3 class="thumb-head-1">
-                        Business Analyst at McKinsey's/ BBA 2020
+                        {{ $val->translate('position') }}
                     </h3>
                     <h2 class="thumb-head-2">
-                        Arzu Huseynzade
+                        {{ $val->translate('name') }}
                     </h2>
                     <p class="thumb-body">
-                        Being the pioneer oil and gas educational school across Europe and Asia, the Azerbaijan
-                        State
-                        Oil Academy (now Azerbaijan State Oil and Industry University (ASOIU)) was founded in
-                        November
-                        1920. During the period of its activities, ASOIU played a special role in developing
-                        national
-                        education.
+                        {{ $val->translate('desc') }}
                     </p>
                     <div class="thumb-comment">
                         <span>
                             “
                         </span>
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                            {{ $val->translate('short_desc') }}
                         </p>
                     </div>
                 </div>
@@ -143,77 +137,15 @@
                     <div class="about-bg-1"></div>
                     <div class="about-bg-2"></div>
                     <div class="about-bg-3"></div>
-                    <img class="about-img-1" src="./img/about-1.png" alt="">
+                    <img class="about-img-1" src="{{ asset($val->img) }}" alt="">
                 </div>
             </div>
-            <div class="leader-block">
-                <div class="about-images">
-                    <div class="bg-big"></div>
-                    <div class="about-bg-1"></div>
-                    <div class="about-bg-2"></div>
-                    <div class="about-bg-3"></div>
-                    <img class="about-img-1" src="./img/about-1.png" alt="">
-                </div>
-                <div class="thumb-text">
-                    <h3 class="thumb-head-1">
-                        Business Analyst at McKinsey's/ BBA 2020
-                    </h3>
-                    <h2 class="thumb-head-2">
-                        Arzu Huseynzade
-                    </h2>
-                    <p class="thumb-body">
-                        Being the pioneer oil and gas educational school across Europe and Asia, the Azerbaijan
-                        State
-                        Oil Academy (now Azerbaijan State Oil and Industry University (ASOIU)) was founded in
-                        November
-                        1920. During the period of its activities, ASOIU played a special role in developing
-                        national
-                        education.
-                    </p>
-                    <div class="thumb-comment">
-                        <span>
-                            “
-                        </span>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="leader-block leader-block-2">
-                <div class="thumb-text">
-                    <h3 class="thumb-head-1">
-                        Business Analyst at McKinsey's/ BBA 2020
-                    </h3>
-                    <h2 class="thumb-head-2">
-                        Arzu Huseynzade
-                    </h2>
-                    <p class="thumb-body">
-                        Being the pioneer oil and gas educational school across Europe and Asia, the Azerbaijan
-                        State
-                        Oil Academy (now Azerbaijan State Oil and Industry University (ASOIU)) was founded in
-                        November
-                        1920. During the period of its activities, ASOIU played a special role in developing
-                        national
-                        education.
-                    </p>
-                    <div class="thumb-comment">
-                        <span>
-                            “
-                        </span>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                        </p>
-                    </div>
-                </div>
-                <div class="about-images">
-                    <div class="bg-big"></div>
-                    <div class="about-bg-1"></div>
-                    <div class="about-bg-2"></div>
-                    <div class="about-bg-3"></div>
-                    <img class="about-img-1" src="./img/about-1.png" alt="">
-                </div>
-            </div>
+            @endif
+           
+           
+            @endforeach
+
+
         </div>
     </div>
 </section>
@@ -223,15 +155,16 @@
     <div class="container">
         <div class="row">
             <div class="teacher-cards">
+                @foreach ($teachers as $item)
                 <div class="teacher-card">
                     <div class="teacher-card-body">
-                        <img src="./img/teacher-img.png" alt="">
+                        <img src="{{ asset($item->img) }}" alt="">
                         <div class="teacher-textbox">
                             <h4 class="teacher-head">
-                                Marketing Coordinator
+                                {{ $item->translate('position') }}
                             </h4>
                             <h4 class="teacher-name">
-                                Albert Flores
+                                {{ $item->translate('name') }}
                             </h4>
                         </div>
                     </div>
@@ -247,294 +180,35 @@
                                         <div class="about-bg-1"></div>
                                         <div class="about-bg-2"></div>
                                         <div class="about-bg-3"></div>
-                                        <img class="about-img-1" src="./img/about-1.png" alt="">
+                                        <img class="about-img-1" src="{{ asset($item->img) }}" alt="">
                                     </div>
                                     <div class="thumb-text">
                                         <h3 class="thumb-head-1">
-                                            Business Analyst at McKinsey's/ BBA 2020
+                                            {{ $item->translate('position') }}
                                         </h3>
                                         <h2 class="thumb-head-2">
-                                            Arzu Huseynzade
+                                            {{ $item->translate('name') }}
                                         </h2>
                                         <p class="thumb-body">
-                                            Being the pioneer oil and gas educational school across Europe and
-                                            Asia, the Azerbaijan State
-                                            Oil Academy (now Azerbaijan State Oil and Industry University
-                                            (ASOIU)) was founded in November
-                                            1920. During the period of its activities, ASOIU played a special
-                                            role in developing national
-                                            education.
+                                            {{ $item->translate('desc') }}
                                         </p>
                                     </div>
                                 </div>
-                                <a href="#" class="cv-download">
-                                    <img src="./img/down.svg" alt="">
+                                <a 
+                                @if ($item->cv)
+                                href="{{ route('download_file',$item->id) }}"
+                                @else
+                                    href=""
+                                @endif class="cv-download">
+                                    <img src="{{ asset('front/') }}/./img/down.svg" alt="">
                                     Download CV
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="teacher-card">
-                    <div class="teacher-card-body">
-                        <img src="./img/teacher-img.png" alt="">
-                        <div class="teacher-textbox">
-                            <h4 class="teacher-head">
-                                Marketing Coordinator
-                            </h4>
-                            <h4 class="teacher-name">
-                                Albert Flores
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="pop-up">
-                        <div class="container">
-                            <div class="row">
-                                <div class="container pop-up-container">
-                                    <img src="./img/close.svg" alt="" class="close-pop-up">
-                                </div>
-                                <div class="pop-up-main">
-                                    <div class="about-images">
-                                        <div class="bg-big"></div>
-                                        <div class="about-bg-1"></div>
-                                        <div class="about-bg-2"></div>
-                                        <div class="about-bg-3"></div>
-                                        <img class="about-img-1" src="./img/about-1.png" alt="">
-                                    </div>
-                                    <div class="thumb-text">
-                                        <h3 class="thumb-head-1">
-                                            Business Analyst at McKinsey's/ BBA 2020
-                                        </h3>
-                                        <h2 class="thumb-head-2">
-                                            Arzu Huseynzade
-                                        </h2>
-                                        <p class="thumb-body">
-                                            Being the pioneer oil and gas educational school across Europe and
-                                            Asia, the Azerbaijan State
-                                            Oil Academy (now Azerbaijan State Oil and Industry University
-                                            (ASOIU)) was founded in November
-                                            1920. During the period of its activities, ASOIU played a special
-                                            role in developing national
-                                            education.
-                                        </p>
-                                    </div>
-                                </div>
-                                <a href="#" class="cv-download">
-                                    <img src="./img/down.svg" alt="">
-                                    Download CV
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="teacher-card">
-                    <div class="teacher-card-body">
-                        <img src="./img/teacher-img.png" alt="">
-                        <div class="teacher-textbox">
-                            <h4 class="teacher-head">
-                                Marketing Coordinator
-                            </h4>
-                            <h4 class="teacher-name">
-                                Albert Flores
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="pop-up">
-                        <div class="container">
-                            <div class="row">
-                                <div class="container pop-up-container">
-                                    <img src="./img/close.svg" alt="" class="close-pop-up">
-                                </div>
-                                <div class="pop-up-main">
-                                    <div class="about-images">
-                                        <div class="bg-big"></div>
-                                        <div class="about-bg-1"></div>
-                                        <div class="about-bg-2"></div>
-                                        <div class="about-bg-3"></div>
-                                        <img class="about-img-1" src="./img/about-1.png" alt="">
-                                    </div>
-                                    <div class="thumb-text">
-                                        <h3 class="thumb-head-1">
-                                            Business Analyst at McKinsey's/ BBA 2020
-                                        </h3>
-                                        <h2 class="thumb-head-2">
-                                            Arzu Huseynzade
-                                        </h2>
-                                        <p class="thumb-body">
-                                            Being the pioneer oil and gas educational school across Europe and
-                                            Asia, the Azerbaijan State
-                                            Oil Academy (now Azerbaijan State Oil and Industry University
-                                            (ASOIU)) was founded in November
-                                            1920. During the period of its activities, ASOIU played a special
-                                            role in developing national
-                                            education.
-                                        </p>
-                                    </div>
-                                </div>
-                                <a href="#" class="cv-download">
-                                    <img src="./img/down.svg" alt="">
-                                    Download CV
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="teacher-card">
-                    <div class="teacher-card-body">
-                        <img src="./img/teacher-img.png" alt="">
-                        <div class="teacher-textbox">
-                            <h4 class="teacher-head">
-                                Marketing Coordinator
-                            </h4>
-                            <h4 class="teacher-name">
-                                Albert Flores
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="pop-up">
-                        <div class="container">
-                            <div class="row">
-                                <div class="container pop-up-container">
-                                    <img src="./img/close.svg" alt="" class="close-pop-up">
-                                </div>
-                                <div class="pop-up-main">
-                                    <div class="about-images">
-                                        <div class="bg-big"></div>
-                                        <div class="about-bg-1"></div>
-                                        <div class="about-bg-2"></div>
-                                        <div class="about-bg-3"></div>
-                                        <img class="about-img-1" src="./img/about-1.png" alt="">
-                                    </div>
-                                    <div class="thumb-text">
-                                        <h3 class="thumb-head-1">
-                                            Business Analyst at McKinsey's/ BBA 2020
-                                        </h3>
-                                        <h2 class="thumb-head-2">
-                                            Arzu Huseynzade
-                                        </h2>
-                                        <p class="thumb-body">
-                                            Being the pioneer oil and gas educational school across Europe and
-                                            Asia, the Azerbaijan State
-                                            Oil Academy (now Azerbaijan State Oil and Industry University
-                                            (ASOIU)) was founded in November
-                                            1920. During the period of its activities, ASOIU played a special
-                                            role in developing national
-                                            education.
-                                        </p>
-                                    </div>
-                                </div>
-                                <a href="#" class="cv-download">
-                                    <img src="./img/down.svg" alt="">
-                                    Download CV
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="teacher-card">
-                    <div class="teacher-card-body">
-                        <img src="./img/teacher-img.png" alt="">
-                        <div class="teacher-textbox">
-                            <h4 class="teacher-head">
-                                Marketing Coordinator
-                            </h4>
-                            <h4 class="teacher-name">
-                                Albert Flores
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="pop-up">
-                        <div class="container">
-                            <div class="row">
-                                <div class="container pop-up-container">
-                                    <img src="./img/close.svg" alt="" class="close-pop-up">
-                                </div>
-                                <div class="pop-up-main">
-                                    <div class="about-images">
-                                        <div class="bg-big"></div>
-                                        <div class="about-bg-1"></div>
-                                        <div class="about-bg-2"></div>
-                                        <div class="about-bg-3"></div>
-                                        <img class="about-img-1" src="./img/about-1.png" alt="">
-                                    </div>
-                                    <div class="thumb-text">
-                                        <h3 class="thumb-head-1">
-                                            Business Analyst at McKinsey's/ BBA 2020
-                                        </h3>
-                                        <h2 class="thumb-head-2">
-                                            Arzu Huseynzade
-                                        </h2>
-                                        <p class="thumb-body">
-                                            Being the pioneer oil and gas educational school across Europe and
-                                            Asia, the Azerbaijan State
-                                            Oil Academy (now Azerbaijan State Oil and Industry University
-                                            (ASOIU)) was founded in November
-                                            1920. During the period of its activities, ASOIU played a special
-                                            role in developing national
-                                            education.
-                                        </p>
-                                    </div>
-                                </div>
-                                <a href="#" class="cv-download">
-                                    <img src="./img/down.svg" alt="">
-                                    Download CV
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="teacher-card">
-                    <div class="teacher-card-body">
-                        <img src="./img/teacher-img.png" alt="">
-                        <div class="teacher-textbox">
-                            <h4 class="teacher-head">
-                                Marketing Coordinator
-                            </h4>
-                            <h4 class="teacher-name">
-                                Albert Flores
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="pop-up">
-                        <div class="container">
-                            <div class="row">
-                                <div class="container pop-up-container">
-                                    <img src="./img/close.svg" alt="" class="close-pop-up">
-                                </div>
-                                <div class="pop-up-main">
-                                    <div class="about-images">
-                                        <div class="bg-big"></div>
-                                        <div class="about-bg-1"></div>
-                                        <div class="about-bg-2"></div>
-                                        <div class="about-bg-3"></div>
-                                        <img class="about-img-1" src="./img/about-1.png" alt="">
-                                    </div>
-                                    <div class="thumb-text">
-                                        <h3 class="thumb-head-1">
-                                            Business Analyst at McKinsey's/ BBA 2020
-                                        </h3>
-                                        <h2 class="thumb-head-2">
-                                            Arzu Huseynzade
-                                        </h2>
-                                        <p class="thumb-body">
-                                            Being the pioneer oil and gas educational school across Europe and
-                                            Asia, the Azerbaijan State
-                                            Oil Academy (now Azerbaijan State Oil and Industry University
-                                            (ASOIU)) was founded in November
-                                            1920. During the period of its activities, ASOIU played a special
-                                            role in developing national
-                                            education.
-                                        </p>
-                                    </div>
-                                </div>
-                                <a href="#" class="cv-download">
-                                    <img src="./img/down.svg" alt="">
-                                    Download CV
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+                
             </div>
         </div>
     </div>
@@ -545,15 +219,16 @@
     <div class="container">
         <div class="row">
             <div class="teacher-cards">
+                @foreach ($staff as $item)
                 <div class="teacher-card">
                     <div class="teacher-card-body">
-                        <img src="./img/teacher-img.png" alt="">
+                        <img src="{{ asset($item->img) }}" alt="">
                         <div class="teacher-textbox">
                             <h4 class="teacher-head">
-                                Marketing Coordinator
+                                {{ $item->translate('position') }}
                             </h4>
                             <h4 class="teacher-name">
-                                Abert Flores
+                                {{ $item->translate('name') }}
                             </h4>
                         </div>
                     </div>
@@ -561,7 +236,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="container pop-up-container">
-                                    <img src="./img/close.svg" alt="" class="close-pop-up">
+                                    <img src="{{ asset('front/') }}/./img/close.svg" alt="" class="close-pop-up">
                                 </div>
                                 <div class="pop-up-main">
                                     <div class="about-images">
@@ -569,294 +244,33 @@
                                         <div class="about-bg-1"></div>
                                         <div class="about-bg-2"></div>
                                         <div class="about-bg-3"></div>
-                                        <img class="about-img-1" src="./img/about-1.png" alt="">
+                                        <img class="about-img-1" src="{{ asset($item->img) }}" alt="">
                                     </div>
                                     <div class="thumb-text">
                                         <h3 class="thumb-head-1">
-                                            Business Analyst at McKinsey's/ BBA 2020
+                                            {{ $item->translate('position') }}
                                         </h3>
                                         <h2 class="thumb-head-2">
-                                            Arzu Huseynzade
+                                            {{ $item->translate('name') }}
                                         </h2>
                                         <p class="thumb-body">
-                                            Being the pioneer oil and gas educational school across Europe and
-                                            Asia, the Azerbaijan State
-                                            Oil Academy (now Azerbaijan State Oil and Industry University
-                                            (ASOIU)) was founded in November
-                                            1920. During the period of its activities, ASOIU played a special
-                                            role in developing national
-                                            education.
+                                            {{ $item->translate('desc') }}
                                         </p>
                                     </div>
                                 </div>
-                                <a href="#" class="cv-download">
-                                    <img src="./img/down.svg" alt="">
+                                <a  @if ($item->cv)
+                                    href="{{ route('download_file',$item->id) }}"
+                                    @else
+                                        href=""
+                                    @endif class="cv-download">
+                                    <img src="{{ asset('front/') }}/./img/down.svg" alt="">
                                     Download CV
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="teacher-card">
-                    <div class="teacher-card-body">
-                        <img src="./img/teacher-img.png" alt="">
-                        <div class="teacher-textbox">
-                            <h4 class="teacher-head">
-                                Marketing Coordinator
-                            </h4>
-                            <h4 class="teacher-name">
-                                Albert Flores
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="pop-up">
-                        <div class="container">
-                            <div class="row">
-                                <div class="container pop-up-container">
-                                    <img src="./img/close.svg" alt="" class="close-pop-up">
-                                </div>
-                                <div class="pop-up-main">
-                                    <div class="about-images">
-                                        <div class="bg-big"></div>
-                                        <div class="about-bg-1"></div>
-                                        <div class="about-bg-2"></div>
-                                        <div class="about-bg-3"></div>
-                                        <img class="about-img-1" src="./img/about-1.png" alt="">
-                                    </div>
-                                    <div class="thumb-text">
-                                        <h3 class="thumb-head-1">
-                                            Business Analyst at McKinsey's/ BBA 2020
-                                        </h3>
-                                        <h2 class="thumb-head-2">
-                                            Arzu Huseynzade
-                                        </h2>
-                                        <p class="thumb-body">
-                                            Being the pioneer oil and gas educational school across Europe and
-                                            Asia, the Azerbaijan State
-                                            Oil Academy (now Azerbaijan State Oil and Industry University
-                                            (ASOIU)) was founded in November
-                                            1920. During the period of its activities, ASOIU played a special
-                                            role in developing national
-                                            education.
-                                        </p>
-                                    </div>
-                                </div>
-                                <a href="#" class="cv-download">
-                                    <img src="./img/down.svg" alt="">
-                                    Download CV
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="teacher-card">
-                    <div class="teacher-card-body">
-                        <img src="./img/teacher-img.png" alt="">
-                        <div class="teacher-textbox">
-                            <h4 class="teacher-head">
-                                Marketing Coordinator
-                            </h4>
-                            <h4 class="teacher-name">
-                                Albert Flores
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="pop-up">
-                        <div class="container">
-                            <div class="row">
-                                <div class="container pop-up-container">
-                                    <img src="./img/close.svg" alt="" class="close-pop-up">
-                                </div>
-                                <div class="pop-up-main">
-                                    <div class="about-images">
-                                        <div class="bg-big"></div>
-                                        <div class="about-bg-1"></div>
-                                        <div class="about-bg-2"></div>
-                                        <div class="about-bg-3"></div>
-                                        <img class="about-img-1" src="./img/about-1.png" alt="">
-                                    </div>
-                                    <div class="thumb-text">
-                                        <h3 class="thumb-head-1">
-                                            Business Analyst at McKinsey's/ BBA 2020
-                                        </h3>
-                                        <h2 class="thumb-head-2">
-                                            Arzu Huseynzade
-                                        </h2>
-                                        <p class="thumb-body">
-                                            Being the pioneer oil and gas educational school across Europe and
-                                            Asia, the Azerbaijan State
-                                            Oil Academy (now Azerbaijan State Oil and Industry University
-                                            (ASOIU)) was founded in November
-                                            1920. During the period of its activities, ASOIU played a special
-                                            role in developing national
-                                            education.
-                                        </p>
-                                    </div>
-                                </div>
-                                <a href="#" class="cv-download">
-                                    <img src="./img/down.svg" alt="">
-                                    Download CV
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="teacher-card">
-                    <div class="teacher-card-body">
-                        <img src="./img/teacher-img.png" alt="">
-                        <div class="teacher-textbox">
-                            <h4 class="teacher-head">
-                                Marketing Coordinator
-                            </h4>
-                            <h4 class="teacher-name">
-                                Albert Flores
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="pop-up">
-                        <div class="container">
-                            <div class="row">
-                                <div class="container pop-up-container">
-                                    <img src="./img/close.svg" alt="" class="close-pop-up">
-                                </div>
-                                <div class="pop-up-main">
-                                    <div class="about-images">
-                                        <div class="bg-big"></div>
-                                        <div class="about-bg-1"></div>
-                                        <div class="about-bg-2"></div>
-                                        <div class="about-bg-3"></div>
-                                        <img class="about-img-1" src="./img/about-1.png" alt="">
-                                    </div>
-                                    <div class="thumb-text">
-                                        <h3 class="thumb-head-1">
-                                            Business Analyst at McKinsey's/ BBA 2020
-                                        </h3>
-                                        <h2 class="thumb-head-2">
-                                            Arzu Huseynzade
-                                        </h2>
-                                        <p class="thumb-body">
-                                            Being the pioneer oil and gas educational school across Europe and
-                                            Asia, the Azerbaijan State
-                                            Oil Academy (now Azerbaijan State Oil and Industry University
-                                            (ASOIU)) was founded in November
-                                            1920. During the period of its activities, ASOIU played a special
-                                            role in developing national
-                                            education.
-                                        </p>
-                                    </div>
-                                </div>
-                                <a href="#" class="cv-download">
-                                    <img src="./img/down.svg" alt="">
-                                    Download CV
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="teacher-card">
-                    <div class="teacher-card-body">
-                        <img src="./img/teacher-img.png" alt="">
-                        <div class="teacher-textbox">
-                            <h4 class="teacher-head">
-                                Marketing Coordinator
-                            </h4>
-                            <h4 class="teacher-name">
-                                Albert Flores
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="pop-up">
-                        <div class="container">
-                            <div class="row">
-                                <div class="container pop-up-container">
-                                    <img src="./img/close.svg" alt="" class="close-pop-up">
-                                </div>
-                                <div class="pop-up-main">
-                                    <div class="about-images">
-                                        <div class="bg-big"></div>
-                                        <div class="about-bg-1"></div>
-                                        <div class="about-bg-2"></div>
-                                        <div class="about-bg-3"></div>
-                                        <img class="about-img-1" src="./img/about-1.png" alt="">
-                                    </div>
-                                    <div class="thumb-text">
-                                        <h3 class="thumb-head-1">
-                                            Business Analyst at McKinsey's/ BBA 2020
-                                        </h3>
-                                        <h2 class="thumb-head-2">
-                                            Arzu Huseynzade
-                                        </h2>
-                                        <p class="thumb-body">
-                                            Being the pioneer oil and gas educational school across Europe and
-                                            Asia, the Azerbaijan State
-                                            Oil Academy (now Azerbaijan State Oil and Industry University
-                                            (ASOIU)) was founded in November
-                                            1920. During the period of its activities, ASOIU played a special
-                                            role in developing national
-                                            education.
-                                        </p>
-                                    </div>
-                                </div>
-                                <a href="#" class="cv-download">
-                                    <img src="./img/down.svg" alt="">
-                                    Download CV
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="teacher-card">
-                    <div class="teacher-card-body">
-                        <img src="./img/teacher-img.png" alt="">
-                        <div class="teacher-textbox">
-                            <h4 class="teacher-head">
-                                Marketing Coordinator
-                            </h4>
-                            <h4 class="teacher-name">
-                                Albert Flores
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="pop-up">
-                        <div class="container">
-                            <div class="row">
-                                <div class="container pop-up-container">
-                                    <img src="./img/close.svg" alt="" class="close-pop-up">
-                                </div>
-                                <div class="pop-up-main">
-                                    <div class="about-images">
-                                        <div class="bg-big"></div>
-                                        <div class="about-bg-1"></div>
-                                        <div class="about-bg-2"></div>
-                                        <div class="about-bg-3"></div>
-                                        <img class="about-img-1" src="./img/about-1.png" alt="">
-                                    </div>
-                                    <div class="thumb-text">
-                                        <h3 class="thumb-head-1">
-                                            Business Analyst at McKinsey's/ BBA 2020
-                                        </h3>
-                                        <h2 class="thumb-head-2">
-                                            Arzu Huseynzade
-                                        </h2>
-                                        <p class="thumb-body">
-                                            Being the pioneer oil and gas educational school across Europe and
-                                            Asia, the Azerbaijan State
-                                            Oil Academy (now Azerbaijan State Oil and Industry University
-                                            (ASOIU)) was founded in November
-                                            1920. During the period of its activities, ASOIU played a special
-                                            role in developing national
-                                            education.
-                                        </p>
-                                    </div>
-                                </div>
-                                <a href="#" class="cv-download">
-                                    <img src="./img/down.svg" alt="">
-                                    Download CV
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach 
             </div>
         </div>
     </div>

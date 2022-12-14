@@ -7,37 +7,37 @@
 @section('lang')
 @if (App::getLocale()==='az')
 <li class="lang-item">
-    <a href="{{ route(str_replace(app()->getLocale(), 'en', $current), $newsevent->slug['en'] ) }}">
+    <a href="{{ route(str_replace(app()->getLocale(), 'en', $current), $newsevent?->slug['en'] ) }}">
         En
     </a>
 </li>
 <span></span>
 <li class="lang-item">
-    <a href="{{ route(str_replace(app()->getLocale(), 'de', $current),$newsevent->slug['de']) }}">
+    <a href="{{ route(str_replace(app()->getLocale(), 'de', $current),$newsevent?->slug['de']) }}">
         De
     </a>
 </li>
 @elseif(App::getLocale()==='en')
 <li class="lang-item">
-    <a href="{{ route(str_replace(app()->getLocale(), 'az', $current),$newsevent->slug['az']) }}">
+    <a href="{{ route(str_replace(app()->getLocale(), 'az', $current),$newsevent?->slug['az']) }}">
         Az
     </a>
 </li>
 <span></span>
 <li class="lang-item">
-    <a href="{{ route(str_replace(app()->getLocale(), 'de', $current) , $newsevent->slug['de']) }}">
+    <a href="{{ route(str_replace(app()->getLocale(), 'de', $current) , $newsevent?->slug['de']) }}">
         De
     </a>
 </li>
 @else
 <li class="lang-item">
-    <a href="{{ route(str_replace(app()->getLocale(), 'az', $current),$newsevent->slug['az']) }}">
+    <a href="{{ route(str_replace(app()->getLocale(), 'az', $current),$newsevent?->slug['az']) }}">
         Az
     </a>
 </li>
 <span></span>
 <li class="lang-item">
-    <a href="{{ route(str_replace(app()->getLocale(), 'en', $current) , $newsevent->slug['en']) }}">
+    <a href="{{ route(str_replace(app()->getLocale(), 'en', $current) , $newsevent?->slug['en']) }}">
         En
     </a>
 </li>    
@@ -48,7 +48,7 @@
 @section('content')
 
 <section id="page-head">
-    <img src="./img/news-bg.png" alt="">
+    <img src="{{ asset('front/') }}/./img/news-bg.png" alt="">
     <div class="head-bg"></div>
     <div class="background">
         <div class="container">

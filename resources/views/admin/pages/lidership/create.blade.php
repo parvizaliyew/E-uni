@@ -54,16 +54,28 @@ Leadership & staff
                 </div>
 
                 <div class="col-md-4">
-                    <div class="form-group translate">
-                        <label for="">Book Name</label>
-                        <input type="hidden" name="book_name" value='{"az":"","en":"","de":""}'>
-                        <input  class="form-control">
+                    <label class="form-group" for="">CV</label>
+                    <div class="mb-3">
+                        <input name="cv" accept="pdf" class="form-control" type="file" id="formFile">
                     </div>
-                    @error('name')
-                    <span class="text-danger mt-2">{{ $message }}</span> <br>
+                    @error('cv')
+                    <span class="text-danger mt-2">{{ $message }}</span> 
                     @enderror
-                 </div>
+                </div>
            </div>
+           <div class="row mb-3">
+           <div class="col-md-12">
+            <div class="form-group translate">
+                <label for="">Book Name</label>
+                <input type="hidden" name="book_name" value='{"az":"","en":"","de":""}'>
+                <input  class="form-control">
+            </div>
+            @error('name')
+            <span class="text-danger mt-2">{{ $message }}</span> <br>
+            @enderror
+         </div>         
+        </div>
+
         <div class="row mb-3">
          <div class="col-md-12">
             <div class="form-group translate">

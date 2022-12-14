@@ -120,6 +120,17 @@ LeaderShip
         </div>
         </div>
 
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-group" for="">CV</label> <br>
+                <div class="mb-3">
+                    <input name="cv" class="form-control" type="file" id="formFile">
+                </div>
+                @error('cv')
+                <span class="text-danger mt-2">{{ $message }}</span> 
+                @enderror
+            </div>
+            </div>
         <a href="{{ route('leadership.index') }}" class="btn btn-success">Back</a>
         <button type="submit" class="btn btn-primary">Update</button>
         </form>

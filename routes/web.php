@@ -99,6 +99,12 @@ Route::get('/tedbir/{slug}',[FrontController::class,'news_single'])->name('event
 Route::get('/en/event/{slug}',[FrontController::class,'news_single'])->name('event_single.en');
 Route::get('/de/messen/{slug}',[FrontController::class,'news_single'])->name('event_single.de');
 
-Route::get('/liderlik&heyet',[FrontController::class,'lid_heyet'])->name('lid_heyet.az');
-Route::get('/en/leadership&staff',[FrontController::class,'lid_heyet'])->name('lid_heyet.en');
-Route::get('/de/führung&mitarbeiter',[FrontController::class,'lid_heyet'])->name('lid_heyet.de');
+Route::get('/liderlik-heyet',[FrontController::class,'lid_heyet'])->name('lid_heyet.az');
+Route::get('/en/leadership-staff',[FrontController::class,'lid_heyet'])->name('lid_heyet.en');
+Route::get('/de/führung-mitarbeiter',[FrontController::class,'lid_heyet'])->name('lid_heyet.de');
+
+Route::get('/məzunlar',[FrontController::class,'alumni'])->name('alumni.az');
+Route::get('/en/alumni',[FrontController::class,'alumni'])->name('alumni.en');
+Route::get('/de/absolventen',[FrontController::class,'alumni'])->name('alumni.de');
+
+Route::get('file/download/{id}',[FrontController::class,'download'])->name('download_file');

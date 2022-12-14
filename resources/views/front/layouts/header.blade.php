@@ -145,7 +145,7 @@
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="#">
+                                        <a href="{{ route('lid_heyet.'.app()->getLocale()) }}">
                                             Leadership & staff
                                         </a>
                                     </li>
@@ -162,7 +162,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">
+                                <a href="{{ route('alumni.'.app()->getLocale()) }}">
                                     Alumni
                                 </a>
                             </li>
