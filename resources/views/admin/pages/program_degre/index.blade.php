@@ -55,8 +55,10 @@ Programs Degree
                                             Bachelor Programs
                                             @elseif($item->type===2)
                                             Master degree
+                                            @elseif($item->type===3)
+                                            PhD / University of Siegen
                                             @else
-                                            PhD 
+                                            PhD /  Georgia State University
                                             @endif</td>
                                             <td class="d-flex" style="font-size: 20px;">
                                                 <a class="btn btn-primary" href="{{ route('programs-degree.edit',$item->id) }}"><i class="ti-pencil"></i></a>

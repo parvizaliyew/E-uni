@@ -119,4 +119,24 @@ Route::get('/bakalavr-derecesi',[FrontController::class,'bachelor'])->name('bach
 Route::get('/en/bachelor-degree',[FrontController::class,'bachelor'])->name('bachelor.en');
 Route::get('/de/bachelor-abschluss',[FrontController::class,'bachelor'])->name('bachelor.de');
 
+Route::get('/master-derecesi',[FrontController::class,'master'])->name('master.az');
+Route::get('/en/master-degree',[FrontController::class,'master'])->name('master.en');
+Route::get('/de/master-abschluss',[FrontController::class,'master'])->name('master.de');
+
+Route::get('/phd-derecesi',[FrontController::class,'phd'])->name('phd.az');
+Route::get('/en/phd-degree',[FrontController::class,'phd'])->name('phd.en');
+Route::get('/de/phd-abschluss',[FrontController::class,'phd'])->name('phd.de');
+
+Route::get('/bakalavr-derecesi/{slug}',[FrontController::class,'akademic_single'])->name('bachelor_single.az');
+Route::get('/en/bachelor-degree/{slug}',[FrontController::class,'akademic_single'])->name('bachelor_single.en');
+Route::get('/de/bachelor-abschluss/{slug}',[FrontController::class,'akademic_single'])->name('bachelor_single.de');
+
+Route::get('/master-derecesi/{slug}',[FrontController::class,'akademic_single'])->name('master_single.az');
+Route::get('/en/master-degree/{slug}',[FrontController::class,'akademic_single'])->name('master_single.en');
+Route::get('/de/master-abschluss/{slug}',[FrontController::class,'akademic_single'])->name('master_single.de');
+
+Route::get('/phd-derecesi/{slug}',[FrontController::class,'akademic_single'])->name('phd_single.az');
+Route::get('/en/phd-degree/{slug}',[FrontController::class,'akademic_single'])->name('phd_single.en');
+Route::get('/de/phd-abschluss/{slug}',[FrontController::class,'akademic_single'])->name('phd_single.de');
+
 Route::get('file/download/{id}',[FrontController::class,'download'])->name('download_file');

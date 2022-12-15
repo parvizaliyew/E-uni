@@ -36,7 +36,8 @@ Program Degree
                         <select name="type" class="form-control">
                          <option {{ $program->type===1 ? 'selected' : '' }} value="1">Bachelor Programs</option>
                          <option {{ $program->type===2 ? 'selected' : '' }} value="2">Master degree</option>
-                         <option {{ $program->type===3 ? 'selected' : '' }} value="3">PhD</option>
+                         <option {{ $program->type===3 ? 'selected' : '' }} value="3">PhD / University of Siegen</option>
+                         <option {{ $program->type===4 ? 'selected' : '' }} value="4">PhD /  Georgia State University</option>                        
                         </select>
                     </div>
                     @error('type')

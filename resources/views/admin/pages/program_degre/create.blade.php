@@ -54,7 +54,8 @@ Program Degree
                          <option value="">choose</option>
                          <option value="1">Bachelor Programs</option>
                          <option value="2">Master degree</option>
-                         <option value="3">PhD</option>
+                         <option value="3">PhD / University of Siegen</option>
+                         <option value="4">PhD /  Georgia State University</option>
                         </select>
                     </div>
                     @error('type')

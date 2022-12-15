@@ -140,13 +140,13 @@
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="">
-                                            Accreditation
+                                        <a href="{{ route('master.'.app()->getLocale()) }}">
+                                            Master degree
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="">
-                                            Accreditation
+                                        <a href="{{ route('phd.'.app()->getLocale()) }}">
+                                            PhD degree
                                         </a>
                                     </li>
                                 </ul>

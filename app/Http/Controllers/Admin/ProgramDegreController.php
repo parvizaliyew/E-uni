@@ -79,8 +79,8 @@ class ProgramDegreController extends Controller
         }
         
         $data['slug'] = [];
-        foreach (json_decode($request->title) as $key => $title) {
-            $data['slug'][$key] = Str::slug($title);
+        foreach (json_decode($request->name) as $key => $name) {
+            $data['slug'][$key] = Str::slug($name);
         }
 
         ProgramDegre::create($data);

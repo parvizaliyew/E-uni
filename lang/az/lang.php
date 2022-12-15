@@ -23,10 +23,19 @@ return
 
   // **** Bachelor Degree ****
   'bachelor_degree_1'=>'In 2001 a significant event took place in the lif e of Azerbaijan State Oil Academy. In December of the same year, the agreement on the “Preparation of bachelor\'s with New Technologies” Partnership Program was signed by the authorities of two educational institutions - Siegen University (ZU) of German Federative Republic and Azerbaijan State Oil and Industry University az',
-  'bachelor_degree_2'=>'',
-  'bachelor_degree_3'=>'',
-  'bachelor_degree_4'=>'',
-  'bachelor_degree_5'=>'',
-  'bachelor_degree_6'=>'',
+  'bachelor_degree_2'=>'To prepare qualified specialists with fundamental and applied knowledge in engineering economy and management, to create an opportunity for them work in governmental and non-governmental enterprises az',
+  'bachelor_degree_3'=>'To tan the graduate\'s abilities and skills to work in a team and make justified decisions az ',
+  'bachelor_degree_4'=>'According to decision from the 9th of January 1997 of Cabinet of Ministers of AR About the list of specialities and directions of the Higher and Secondary Education to confer bachelor degree to the graduates mastered the whole program az',
+  'bachelor_degree_5'=>'To raise the level of professor-lecturer staff, retrain them and improve knowledge and experience of administrative workers and auxiliary staff for bachelor preparing on business management and mechatronics specialities az',
+  'bachelor_degree_6'=>'Professor lecturer staff of ZU and ASOIU to carry out together scientific research works on business engineering, mechatronics problems meeting update international requirements, apply investigation results in education systems and publish them in the advanced scientific press az',
+
+  // **** Master Degree ****
+  'master_deegre_1'=>'The “MASTER OF BUSINESS ADMINISTRATION (MBA)” PROGRAM was founded in 1998 based on the joint project “Partnership to Develop the Master of Business Administration Program and Faculty capabilities” between the Azerbaijan State Oil Academy (now Azerbaijan State Oil and Industry University) and Georgia State University of USA az',
+  'master_deegre_2'=>'The Master of Business Administration (MBA) Program is one of the most prestigious systems of higher economic education in the world. The characteristic of the MBA Program is such that those who are admitted do not necessarily need a BBA or its equivalent in economics. All who have a bachelor\'s degree in either humanitarian or technical profiles with minimum two years of working experience have an opportunity to become educated in the field of business administration. Each person who graduates from the MBA Program will have a universal education as well as an ability to manage the business in every field az',
+  'master_deegre_3'=>'Since there is a considerable need for specialists in business administration, the MBA Program at the Azerbaijan State Oil and Industry University, in partnership with Georgia State University (GSU), has been established az',
+  'master_deegre_4'=>'Drawing on their theoretical and practical experience the faculty from GSU provided the necessary assistance and support in the preparation and delivery of the courses. Their expert consultations assured teaching quality az',
+  'master_deegre_5'=>'The MBA Program has rich technical facilities such as computer labs and lecturing rooms equipped with modern computer and audio/video tools az',
+  'master_deegre_6'=>'The students, faculty, and staff have access to library resources organized on the basis of American standards. Library materials, with frequent support from our GSU partners, are constantly upgraded az',
+
 
 ];

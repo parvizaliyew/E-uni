@@ -76,12 +76,35 @@ class FrontController extends Controller
         $bachelors=ProgramDegre::where('type','1')->get();
         return view('front.pages.bachelor',compact('bachelors'));
     }
+    public function phd()
+    {
+        $phd1=ProgramDegre::where('type','3')->get();
+        $phd2=ProgramDegre::where('type','4')->get();
+        return view('front.pages.phd',compact('phd1','phd2'));
+    }
+    public function akademic_single($slug)
+    {
+        $akademic=ProgramDegre::whereJsonContains('slug->az',$slug)->orWhereJsonContains('slug->en',$slug)->orWhereJsonContains('slug->de',$slug)->first();
+        return view('front.pages.degree_single',compact('akademic'));
+    }
+
+
+    public function master()
+    {
+        $masters=ProgramDegre::where('type','2')->get();
+        return view('front.pages.master',compact('masters'));
+    }
+
+
+
 
     public function donation()
     {
         $donations=Donation::get();
         return view('front.pages.donation',compact('donations'));
     }
+
+    
 
     public function donation_post(Request $request)
     {
