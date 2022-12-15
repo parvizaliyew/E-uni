@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Route;
+use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
             $view->with('current',Route::currentRouteName());
         });
 
+        view()->composer('*', function ($view) {
+            $view->with('setting',Setting::first());
+        });
       
     }
 }

@@ -167,7 +167,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">
+                                <a href="{{ route('contact.'.app()->getLocale()) }}">
                                     Contact
                                 </a>
                             </li>

@@ -6,7 +6,7 @@ return
   'company_required'=>'Zəhmət olmasa şirkət adınını daxil edin', 
   'email_required'=>'Zəhmət olmasa e-maili daxil edin' ,
   'msj_required'=>'Zəhmət olmasa mesajınızı daxil edin',
-
+  'subject_required'=>'Zəhmət olmasa başlıgı daxil edin',
 
   // **** History ***** 
   'history_title'=>'Azerbaijan State Oil and Industry University (ASOIU) az',
@@ -38,4 +38,16 @@ return
   'master_deegre_6'=>'The students, faculty, and staff have access to library resources organized on the basis of American standards. Library materials, with frequent support from our GSU partners, are constantly upgraded az',
 
 
+  //**** Contact *****/
+  'contact'=>'Contact',
+  'information'=>'Information',
+  'follow_us'=>'Follow us:',
+  'get_in_touch'=>'Get in touch',
+  'message_bellow'=>'Feel free to leave us a message below',
+
+  'name_surname'=>'Name, Surname*',
+  'email'=>'E-mail*',
+  'subject'=>'Subject',
+  'message'=>'Message*',
+  'send'=>'Send',
 ];

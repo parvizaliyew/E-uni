@@ -6,6 +6,7 @@ use App\Models\Lider;
 use App\Models\Alumni;
 use App\Models\Slider;
 use App\Models\Country;
+use App\Models\Message;
 use App\Models\Partner;
 use App\Models\Donation;
 use App\Models\NewsEvent;
@@ -81,6 +82,46 @@ class FrontController extends Controller
         $phd1=ProgramDegre::where('type','3')->get();
         $phd2=ProgramDegre::where('type','4')->get();
         return view('front.pages.phd',compact('phd1','phd2'));
+    }
+    public function contact()
+    {
+        return view('front.pages.contact');
+    }
+    public function contact_post(Request $request)
+    {
+        
+        $data=$request->all();
+        $validator=Validator::make($data,[
+            'name'=>'required',
+            'subject'=>'required',
+            'email'=>'required',
+            'msj'=>'required'
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator);
+        }
+
+       Message::create($data);
+
+
+        $email = "eliyevperviz466@gmail.com";
+        $title= 'E-Uni saytindan mesaj var';
+
+        $data = [
+            'email'         =>        $request->email,
+            'subject'       =>        $request->subject,
+            'name'          =>        $request->name,
+            'msj'           =>        $request->msj,
+        ];
+        Mail::send('mail.contactmail', $data, function($m) use ($title,$email) {
+            $m->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
+            $m->to($email, env('MAIL_FROM_NAME') )->subject($title);
+        });
+        
+            toastr()->success('Mesajınız uğurla göndərildi');
+            return redirect()->back();
     }
     public function akademic_single($slug)
     {

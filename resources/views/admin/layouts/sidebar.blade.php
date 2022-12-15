@@ -111,5 +111,14 @@
         <span>Sosial Galery</span>
         </a>
     </li>
+
+    <li class="mm-active">
+        <a  href="{{ route('contact.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+            <i class="ti-bookmark-alt"></i>
+        </div>  
+        <span>Contact Messages</span>
+        </a>
+    </li>
     </ul>
     </nav>

@@ -6,6 +6,8 @@ return
   'company_required'=>'Please enter your company name', 
   'email_required'=>'Please enter your email' ,
   'msj_required'=>'Please enter your message',
+  'subject_required'=>'Please enter your subject  ',
+
 
    // **** History ***** 
    'history_title'=>'Azerbaijan State Oil and Industry University (ASOIU)',
@@ -35,4 +37,17 @@ return
   'master_deegre_4'=>'Drawing on their theoretical and practical experience the faculty from GSU provided the necessary assistance and support in the preparation and delivery of the courses. Their expert consultations assured teaching quality en',
   'master_deegre_5'=>'The MBA Program has rich technical facilities such as computer labs and lecturing rooms equipped with modern computer and audio/video tools en',
   'master_deegre_6'=>'The students, faculty, and staff have access to library resources organized on the basis of American standards. Library materials, with frequent support from our GSU partners, are constantly upgraded en',
+
+    //**** Contact *****/
+    'contact'=>'Contact',
+    'information'=>'Information',
+    'follow_us'=>'Follow us:',
+    'get_in_touch'=>'Get in touch',
+    'message_bellow'=>'Feel free to leave us a message below',
+  
+    'name_surname'=>'Name, Surname*',
+    'email'=>'E-mail*',
+    'subject'=>'Subject',
+    'message'=>'Message*',
+    'send'=>'Send',
 ];

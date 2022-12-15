@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ContactMessage;
 use App\Http\Controllers\Admin\LiderController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Admin\AlumniController;
@@ -75,6 +76,12 @@ Route::prefix('admin')->group(function ()
     
     Route::resource('/instagalery', InstaGaleryController::class);
     Route::get('/instagalery/delete/{id}', [InstaGaleryController::class,'delete'])->name('instagalery.delete');
+
+    Route::get('contact-messages', [ContactMessage::class,'index'])->name('contact.index');
+    Route::get('contact-message/{id}', [ContactMessage::class,'show'])->name('contact.show');
+    Route::get('contact-message/delete/{id}', [ContactMessage::class,'delete'])->name('contact.delete');
+
+
 });
 
 //********* FRONT *********//
@@ -138,5 +145,11 @@ Route::get('/de/master-abschluss/{slug}',[FrontController::class,'akademic_singl
 Route::get('/phd-derecesi/{slug}',[FrontController::class,'akademic_single'])->name('phd_single.az');
 Route::get('/en/phd-degree/{slug}',[FrontController::class,'akademic_single'])->name('phd_single.en');
 Route::get('/de/phd-abschluss/{slug}',[FrontController::class,'akademic_single'])->name('phd_single.de');
+
+Route::get('/elaqe',[FrontController::class,'contact'])->name('contact.az');
+Route::get('/en/contact',[FrontController::class,'contact'])->name('contact.en');
+Route::get('/de/kontakt',[FrontController::class,'contact'])->name('contact.de');
+Route::post('/contact/post',[FrontController::class,'contact_post'])->name('contact_post');
+
 
 Route::get('file/download/{id}',[FrontController::class,'download'])->name('download_file');
