@@ -79,7 +79,7 @@
                                 </a>
                                 <ul class="dropdown">
                                     <li class="dropdown-item">
-                                        <a href="#">
+                                        <a href="{{ route('history.'.app()->getLocale()) }}">
                                             History
                                         </a>
                                     </li>
@@ -89,12 +89,12 @@
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="#">
+                                        <a href="{{ route('lid_heyet.'.app()->getLocale()) }}">
                                             Leadership & staff
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="#">
+                                        <a href="{{ route('akra.'.app()->getLocale()) }}">
                                             Accreditation
                                         </a>
                                     </li>
@@ -122,7 +122,7 @@
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="#">
+                                        <a href="">
                                             Accreditation
                                         </a>
                                     </li>
@@ -135,22 +135,17 @@
                                 </a>
                                 <ul class="dropdown">
                                     <li class="dropdown-item">
-                                        <a href="#">
-                                            History
+                                        <a href="{{ route('bachelor.'.app()->getLocale()) }}">
+                                            Bachelor degree
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="#">
-                                            BA Programs About
+                                        <a href="">
+                                            Accreditation
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="{{ route('lid_heyet.'.app()->getLocale()) }}">
-                                            Leadership & staff
-                                        </a>
-                                    </li>
-                                    <li class="dropdown-item">
-                                        <a href="#">
+                                        <a href="">
                                             Accreditation
                                         </a>
                                     </li>

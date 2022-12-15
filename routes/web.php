@@ -107,4 +107,16 @@ Route::get('/məzunlar',[FrontController::class,'alumni'])->name('alumni.az');
 Route::get('/en/alumni',[FrontController::class,'alumni'])->name('alumni.en');
 Route::get('/de/absolventen',[FrontController::class,'alumni'])->name('alumni.de');
 
+Route::get('/akkreditasiya',[FrontController::class,'akra'])->name('akra.az');
+Route::get('/en/accreditation',[FrontController::class,'akra'])->name('akra.en');
+Route::get('/de/akkreditierung',[FrontController::class,'akra'])->name('akra.de');
+
+Route::get('/tarix',[FrontController::class,'history'])->name('history.az');
+Route::get('/en/history',[FrontController::class,'history'])->name('history.en');
+Route::get('/de/geschichte',[FrontController::class,'history'])->name('history.de');
+
+Route::get('/bakalavr-derecesi',[FrontController::class,'bachelor'])->name('bachelor.az');
+Route::get('/en/bachelor-degree',[FrontController::class,'bachelor'])->name('bachelor.en');
+Route::get('/de/bachelor-abschluss',[FrontController::class,'bachelor'])->name('bachelor.de');
+
 Route::get('file/download/{id}',[FrontController::class,'download'])->name('download_file');

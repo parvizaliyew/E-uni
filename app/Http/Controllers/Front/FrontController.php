@@ -6,6 +6,7 @@ use App\Models\Lider;
 use App\Models\Alumni;
 use App\Models\Slider;
 use App\Models\Country;
+use App\Models\Partner;
 use App\Models\Donation;
 use App\Models\NewsEvent;
 use App\Models\InstaGalery;
@@ -55,6 +56,25 @@ class FrontController extends Controller
     {
         $alumnis=Alumni::orderBy('id','DESC')->get();
         return view('front.pages.alumni',compact('alumnis'));
+    }
+
+    public function akra()
+    {
+        $lider=Lider::where('type',1)->first();
+        $staff=Lider::where('type',2)->orderBy('id','DESC')->get();
+        return view('front.pages.accreditation',compact('lider','staff'));
+    }
+
+    public function history()
+    {
+        $partners=Partner::orderBy('id','DESC')->get();
+        return view('front.pages.history',compact('partners'));
+    }
+
+    public function bachelor()
+    {
+        $bachelors=ProgramDegre::where('type','1')->get();
+        return view('front.pages.bachelor',compact('bachelors'));
     }
 
     public function donation()
