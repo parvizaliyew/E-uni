@@ -106,7 +106,7 @@
                 </h2>
                 <div class="program-cards">
                     @foreach ($b_programs as $item)
-                    <a href="">
+                    <a href="{{ route('bachelor_single.'.app()->getLocale(),$item->slug[app()->getLocale()]) }}">
                         <div class="program-card">
                             <h4 class="program-head">
                                 {{ $item->translate('name') }}
@@ -307,7 +307,7 @@
                 </h2>
                 <div class="news-events">
                     <div class="big-card">
-                        <a href="#">
+                        <a href="{{ route('event_single.'.app()->getLocale(),$event->slug[app()->getLocale()]) }}">
                             <img class="card-img" src="{{ asset($event->img) }}" alt="">
                             <p class="type">
                                 EVENT
@@ -322,7 +322,7 @@
                                 <p class="date">
                                     {{ Carbon\Carbon::parse($event->date)->format('d.m.Y') }}
                                 </p>
-                                <a href="#" class="next">
+                                <a href="{{ route('event_single.'.app()->getLocale(),$event->slug[app()->getLocale()]) }}" class="next">
                                     ətraflı
                                     <img src="{{ asset('front/') }}/./img/next-arrow.svg" alt="">
                                 </a>
@@ -332,12 +332,12 @@
                     <div class="news-block">
                        @foreach ($events as $item)
                        <div class="little-card">
-                        <a href="#">
+                        <a href="{{ route('event_single.'.app()->getLocale(),$item->slug[app()->getLocale()]) }}">
                             <img class="card-img" src="{{ asset($item->img) }}" alt="">
                             <p class="type">
                                 Events
                             </p>
-                            <a href="#" class="next">
+                            <a href="{{ route('event_single.'.app()->getLocale(),$item->slug[app()->getLocale()]) }}" class="next">
                                 ətraflı
                                 <img src="{{ asset('front/') }}/./img/next-arrow.svg" alt="">
                             </a>
@@ -356,12 +356,12 @@
                     <div class="news-block">
                         @foreach ($news as $item)
                         <div class="little-card">
-                            <a href="#">
+                            <a href="{{ route('news_single.'.app()->getLocale(),$item->slug[app()->getLocale()]) }}">
                                 <img class="card-img" src="{{ asset($item->img) }}" alt="">
                                 <p class="type">
                                     NEWS
                                 </p>
-                                <a href="#" class="next">
+                                <a href="{{ route('news_single.'.app()->getLocale(),$item->slug[app()->getLocale()]) }}" class="next">
                                     ətraflı
                                     <img src="{{ asset('front/') }}/./img/next-arrow.svg" alt="">
                                 </a>

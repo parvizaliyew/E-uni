@@ -2,19 +2,26 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ContactMessage;
+use App\Http\Controllers\Admin\DonationMessage;
 use App\Http\Controllers\Admin\LiderController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Admin\AlumniController;
+use App\Http\Controllers\Admin\GaleryController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\CounterController;
+use App\Http\Controllers\Admin\LibraryController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DonationController;
+use App\Http\Controllers\Admin\PoliciesController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsEventController;
+use App\Http\Controllers\Admin\DegreeFileController;
 use App\Http\Controllers\Admin\InstaGaleryController;
 use App\Http\Controllers\Admin\ProgramDegreController;
 use App\Http\Controllers\Admin\StudentMonthController;
+use App\Http\Controllers\Admin\DonationMessageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -77,17 +84,42 @@ Route::prefix('admin')->group(function ()
     Route::resource('/instagalery', InstaGaleryController::class);
     Route::get('/instagalery/delete/{id}', [InstaGaleryController::class,'delete'])->name('instagalery.delete');
 
+    Route::resource('/galery', GaleryController::class);
+    Route::get('/galery/delete/{id}', [GaleryController::class,'delete'])->name('galery.delete');
+
+    Route::resource('/policies', PoliciesController::class);
+    Route::get('/policies/delete/{id}', [PoliciesController::class,'delete'])->name('policies.delete');
+    Route::get('/policies/dowload/{id}', [PoliciesController::class,'download'])->name('policies.download');
+
+
     Route::get('contact-messages', [ContactMessage::class,'index'])->name('contact.index');
     Route::get('contact-message/{id}', [ContactMessage::class,'show'])->name('contact.show');
     Route::get('contact-message/delete/{id}', [ContactMessage::class,'delete'])->name('contact.delete');
 
+    Route::get('donation-messages', [DonationMessageController::class,'index'])->name('donationmessage.index');
+    Route::get('donation-message/{id}', [DonationMessageController::class,'show'])->name('donationmessage.show');
+    Route::get('donation-message/delete/{id}', [DonationMessageController::class,'delete'])->name('donationmessage.delete');
 
+    Route::resource('/degre-files', DegreeFileController::class);
+    Route::get('/degre-files/delete/{id}', [DegreeFileController::class,'delete'])->name('degre-files.delete');
+    Route::get('/degre-files/dowload/{id}', [DegreeFileController::class,'download'])->name('degre-files.download');
+
+    Route::resource('/library', LibraryController::class);
+    Route::get('/library/delete/{id}', [LibraryController::class,'delete'])->name('library.delete');
 });
 
 //********* FRONT *********//
 Route::get('/',[FrontController::class,'index'])->name('home.az');
 Route::get('/en',[FrontController::class,'index'])->name('home.en');
 Route::get('/de',[FrontController::class,'index'])->name('home.de');
+
+Route::get('/about',[FrontController::class,'about'])->name('about.az');
+Route::get('/en/about',[FrontController::class,'about'])->name('about.en');
+Route::get('/de/about',[FrontController::class,'about'])->name('about.de');
+
+Route::get('/siyasətlər',[FrontController::class,'policies'])->name('policies.az');
+Route::get('/en/policies',[FrontController::class,'policies'])->name('policies.en');
+Route::get('/de/richtlinien',[FrontController::class,'policies'])->name('policies.de');
 
 Route::get('/iane',[FrontController::class,'donation'])->name('donation.az');
 Route::get('/en/donation',[FrontController::class,'donation'])->name('donation.en');
@@ -151,5 +183,24 @@ Route::get('/en/contact',[FrontController::class,'contact'])->name('contact.en')
 Route::get('/de/kontakt',[FrontController::class,'contact'])->name('contact.de');
 Route::post('/contact/post',[FrontController::class,'contact_post'])->name('contact_post');
 
+Route::get('/bakalavr',[FrontController::class,'undergraduate'])->name('u_graduate.az');
+Route::get('/en/undergraduate',[FrontController::class,'undergraduate'])->name('u_graduate.en');
+Route::get('/de/student',[FrontController::class,'undergraduate'])->name('u_graduate.de');
+
+Route::get('/məzun',[FrontController::class,'graduate'])->name('graduate.az');
+Route::get('/en/graduate',[FrontController::class,'graduate'])->name('graduate.en');
+Route::get('/de/absolvent',[FrontController::class,'graduate'])->name('graduate.de');
+
+Route::get('/aspirantura',[FrontController::class,'postgraduate'])->name('postgraduate.az');
+Route::get('/en/postgraduate',[FrontController::class,'postgraduate'])->name('postgraduate.en');
+Route::get('/de/postgraduierter',[FrontController::class,'postgraduate'])->name('postgraduate.de');
+
+Route::get('/beynelxalq-telebeler',[FrontController::class,'international'])->name('international.az');
+Route::get('/en/international-students',[FrontController::class,'international'])->name('international.en');
+Route::get('/de/internationale-schüler',[FrontController::class,'international'])->name('international.de');
+
+Route::get('/library',[FrontController::class,'library'])->name('library.az');
+Route::get('/en/library',[FrontController::class,'library'])->name('library.en');
+Route::get('/de/library',[FrontController::class,'library'])->name('library.de');
 
 Route::get('file/download/{id}',[FrontController::class,'download'])->name('download_file');

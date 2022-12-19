@@ -30,12 +30,12 @@ Accreditation
         <div class="container">
             <ul class="pages">
                 <li class="page-item">
-                    <a href="#">
+                    <a href="{{ route('history.'.app()->getLocale()) }}">
                         History
                     </a>
                 </li>
                 <li class="page-item">
-                    <a href="#">
+                    <a href="{{ route('about.'.app()->getLocale()) }}">
                         About BA Programs
                     </a>
                 </li>

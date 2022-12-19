@@ -137,7 +137,7 @@ class NewsEventController extends Controller
             $fileName=rand(1,100).time().'.'.$ext;
             $fileNameWithUpload='image/event-news/'.$fileName;
             $request->img->move('image/event-news/',$fileName);
-            $news_event->img=$fileNameWithUpload;
+            $data['img']=$fileNameWithUpload;
 
         }
 

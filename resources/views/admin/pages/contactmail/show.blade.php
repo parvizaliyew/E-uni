@@ -56,7 +56,7 @@ Contact Message
            <div class="row mb-3">
             <div class="col-md-12">
                <div class="form-group translate">
-                   <label for="">Email</label>
+                   <label for="">Message</label>
                    <textarea type="text" class="form-control">{{ $message->msj }}</textarea>
                </div>
             </div>

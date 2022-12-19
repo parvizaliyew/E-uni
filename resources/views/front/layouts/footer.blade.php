@@ -40,7 +40,7 @@
                         Admission
                     </h4>
                     <li class="list-item">
-                        <a href="#">
+                        <a href="{{ route('u_graduate.'.app()->getLocale()) }}">
                             Undergraduate
                         </a>
                     </li>

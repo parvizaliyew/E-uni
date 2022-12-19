@@ -8,8 +8,10 @@ use App\Models\Slider;
 use App\Models\Country;
 use App\Models\Message;
 use App\Models\Partner;
+use App\Models\Policie;
 use App\Models\Donation;
 use App\Models\NewsEvent;
+use App\Models\DegreeFile;
 use App\Models\InstaGalery;
 use App\Models\ProgramDegre;
 use Illuminate\Http\Request;
@@ -30,6 +32,43 @@ class FrontController extends Controller
         $news=NewsEvent::where('type','1')->orderBy('date','DESC')->take(2)->get();
         $events=NewsEvent::where('type','0')->where('important',0)->orderBy('date','DESC')->take(2)->get();
         return view('front.pages.index',compact('sliders','b_programs','counter','galeries','event','news','events'));
+    }
+
+    public function about()
+    {
+        $bachs=DegreeFile::where('type',1)->orderBy('id','DESC')->take(3)->get();
+        $masts=DegreeFile::where('type',2)->orderBy('id','DESC')->take(3)->get();
+        $phd=DegreeFile::where('type',3)->orderBy('id','DESC')->take(3)->get();
+        return view('front.pages.about',compact('bachs','masts','phd'));
+    }
+
+    public function policies()
+    {
+        $general=Policie::where('type',1)->orderBy('id','DESC')->get();
+        $financial=Policie::where('type',2)->orderBy('id','DESC')->get();
+        $academic=Policie::where('type',3)->orderBy('id','DESC')->get();
+
+        return view('front.pages.policies',compact('general','financial','academic'));
+    }
+
+    public function undergraduate()
+    {
+        return view('front.pages.undergraduate');
+    }
+
+    public function graduate()
+    {
+        return view('front.pages.graduate');
+    }
+
+    public function postgraduate()
+    {
+        return view('front.pages.postgraduate');
+    }
+
+    public function international()
+    {
+        return view('front.pages.international');
     }
 
     public function news_event()

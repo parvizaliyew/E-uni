@@ -57,13 +57,47 @@
         <span>Proqram's Degree</span>
         </a>
     </li>
-
+    <li class="mm-active">
+        <a  href="{{ route('degre-files.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+            <i class="ti-stats-up"></i>
+        </div>
+        <span>Proqram's Degree Files</span>
+        </a>
+    </li>
     <li class="mm-active">
         <a  href="{{ route('donations.index') }}" aria-expanded="false">
         <div class="icon_menu">
             <i class="ti-bookmark-alt"></i>
         </div>
         <span>Donations</span>
+        </a>
+    </li>
+
+    <li class="mm-active">
+        <a  href="{{ route('policies.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+            <i class="ti-bookmark-alt"></i>
+        </div>
+        <span>Policies</span>
+        </a>
+    </li>
+
+    <li class="mm-active">
+        <a  href="{{ route('galery.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+            <i class="ti-bookmark-alt"></i>
+        </div>
+        <span>Galery</span>
+        </a>
+    </li>
+
+    <li class="mm-active">
+        <a  href="{{ route('library.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+            <i class="ti-bookmark-alt"></i>
+        </div>
+        <span>Library</span>
         </a>
     </li>
 
@@ -120,5 +154,15 @@
         <span>Contact Messages</span>
         </a>
     </li>
+
+    <li class="mm-active">
+        <a  href="{{ route('donationmessage.index') }}" aria-expanded="false">
+        <div class="icon_menu">
+            <i class="ti-bookmark-alt"></i>
+        </div>  
+        <span>Donation Messages</span>
+        </a>
+    </li>
+
     </ul>
     </nav>

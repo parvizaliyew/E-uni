@@ -29,12 +29,12 @@
     <div class="container">
         <ul class="pages">
             <li class="page-item">
-                <a href="#">
+                <a href="{{ route('history.'.app()->getLocale()) }}">
                     History
                 </a>
             </li>
             <li class="page-item">
-                <a href="#">
+                <a href="{{ route('about.'.app()->getLocale()) }}">
                     About BA Programs
                 </a>
             </li>
@@ -172,7 +172,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="container pop-up-container">
-                                    <img src="./img/close.svg" alt="" class="close-pop-up">
+                                    <img src="{{ asset('front/') }}/./img/close.svg" alt="" class="close-pop-up">
                                 </div>
                                 <div class="pop-up-main">
                                     <div class="about-images">
@@ -194,15 +194,14 @@
                                         </p>
                                     </div>
                                 </div>
-                                <a 
                                 @if ($item->cv)
+                                <a
                                 href="{{ route('download_file',$item->id) }}"
-                                @else
-                                    href=""
-                                @endif class="cv-download">
+                                class="cv-download">
                                     <img src="{{ asset('front/') }}/./img/down.svg" alt="">
                                     Download CV
                                 </a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -258,14 +257,14 @@
                                         </p>
                                     </div>
                                 </div>
-                                <a  @if ($item->cv)
+                                @if ($item->cv)
+                                <a  
                                     href="{{ route('download_file',$item->id) }}"
-                                    @else
-                                        href=""
-                                    @endif class="cv-download">
+                                    class="cv-download">
                                     <img src="{{ asset('front/') }}/./img/down.svg" alt="">
                                     Download CV
                                 </a>
+                                @endif
                             </div>
                         </div>
                     </div>

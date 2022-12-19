@@ -31,7 +31,7 @@
                     <div class="header-top-right">
                         <ul class="header-top-nav">
                             <li class="nav-item">
-                                <a href="#">
+                                <a href="{{ route('policies.'.app()->getLocale()) }}">
                                     Policies
                                 </a>
                             </li>
@@ -73,7 +73,7 @@
                     <div class="navbar">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a href="#">
+                                <a href="">
                                     About
                                     <img src="{{ asset('front/') }}/./img/down-img.svg" alt="">
                                 </a>
@@ -84,7 +84,7 @@
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="#">
+                                        <a href="{{ route('about.'.app()->getLocale()) }}">
                                             BA Programs About
                                         </a>
                                     </li>
@@ -107,23 +107,23 @@
                                 </a>
                                 <ul class="dropdown">
                                     <li class="dropdown-item">
-                                        <a href="#">
-                                            History
+                                        <a href="{{ route('u_graduate.'.app()->getLocale()) }}">
+                                            Undergraduate
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="#">
-                                            BA Programs About
+                                        <a href="{{ route('graduate.'.app()->getLocale()) }}">
+                                            Graduate
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="#">
-                                            Leadership & staff
+                                        <a href="{{ route('postgraduate.'.app()->getLocale()) }}">
+                                            Postgraduate
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="">
-                                            Accreditation
+                                        <a href="{{ route('international.'.app()->getLocale()) }}">
+                                            International Students
                                         </a>
                                     </li>
                                 </ul>
