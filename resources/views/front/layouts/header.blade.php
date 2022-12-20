@@ -152,7 +152,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a href="#">
+                                <a href="{{ route('library.'.app()->getLocale()) }}">
                                     Library
                                 </a>
                             </li>

@@ -6,6 +6,7 @@ use App\Models\Lider;
 use App\Models\Alumni;
 use App\Models\Slider;
 use App\Models\Country;
+use App\Models\Library;
 use App\Models\Message;
 use App\Models\Partner;
 use App\Models\Policie;
@@ -109,6 +110,12 @@ class FrontController extends Controller
     {
         $partners=Partner::orderBy('id','DESC')->get();
         return view('front.pages.history',compact('partners'));
+    }
+
+    public function library()
+    {
+        $libraries=Library::orderBy('id','DESC')->get();
+        return view('front.pages.library',compact('libraries'));
     }
 
     public function bachelor()

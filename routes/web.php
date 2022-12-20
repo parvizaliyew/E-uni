@@ -106,6 +106,8 @@ Route::prefix('admin')->group(function ()
 
     Route::resource('/library', LibraryController::class);
     Route::get('/library/delete/{id}', [LibraryController::class,'delete'])->name('library.delete');
+    Route::post('/library/aktiv', [LibraryController::class,'aktiv']);
+
 });
 
 //********* FRONT *********//
@@ -199,8 +201,8 @@ Route::get('/beynelxalq-telebeler',[FrontController::class,'international'])->na
 Route::get('/en/international-students',[FrontController::class,'international'])->name('international.en');
 Route::get('/de/internationale-schüler',[FrontController::class,'international'])->name('international.de');
 
-Route::get('/library',[FrontController::class,'library'])->name('library.az');
+Route::get('/kitabxana',[FrontController::class,'library'])->name('library.az');
 Route::get('/en/library',[FrontController::class,'library'])->name('library.en');
-Route::get('/de/library',[FrontController::class,'library'])->name('library.de');
+Route::get('/de/bibliothek',[FrontController::class,'library'])->name('library.de');
 
 Route::get('file/download/{id}',[FrontController::class,'download'])->name('download_file');

@@ -26,7 +26,7 @@ Library
                                     <h4>Table</h4>
 
                                     <div class="add_button ms-2">
-                                        <a href="{{ route('news-event.create') }}" class="btn_1">ADD</a>
+                                        <a href="{{ route('library.create') }}" class="btn_1">ADD</a>
                                     </div>
                                 </div>
                             </div>
@@ -38,22 +38,27 @@ Library
                                             <th scope="col">#</th>
                                             <th scope="col">Image</th>
                                             <th scope="col">Name</th>
+                                            <th scope="col">Aktiv</th>
                                             <th scope="col">Prosesler</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                        
-                                        @foreach ($libs as $item)
+                                        @foreach ($libraries as $item)
                                         <tr>
                                             <td>{{ $loop->index+1 }}</td>
                                             <td><img width="70px" height="70px" src="{{ asset($item->img) }}" alt=""></td>
                                             <td>{{ Str::limit($item->name,20,'...') }}</td>
+                                            <td><label class="switc">
+                                                <input type="checkbox" {{ $item->aktiv===1 ? 'checked' : '' }} id="aktiv"  onclick="aktivButton({{ $item->id }})" >
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </td>
                                             <td class="d-flex" style="font-size: 20px;">
                                                 <a class="btn btn-primary" href="{{ route('library.edit',$item->id) }}"><i class="ti-pencil"></i></a>
                                                 <a class="btn btn-danger delete" href="{{ route('library.delete',$item->id) }}"><i class="ti-trash"></i></a>                                               
                                             </td>
-
                                         </tr>
                                         @endforeach
                                     
@@ -111,6 +116,37 @@ Library
             }
         })
     });
+
+</script>
+
+
+<script>
+function aktivButton(id)
+{
+    var id =id;
+    
+    $.ajax({
+        url:"library/aktiv",
+        type:"post",
+        data:{
+            id:id,
+            _token: '{{csrf_token()}}',
+        },
+        succes:function(result)
+        {
+            if(result===1)
+            {
+                // console.log('aktiv deyil')
+            }
+            else
+            {
+                console.log('aktiv deyil')
+
+            }
+        }
+
+    })
+    }
 
 </script>
 @endpush
